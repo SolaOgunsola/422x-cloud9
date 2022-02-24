@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+  <head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href=""{{ url_for('static', filename='css/style.css') }}>
+  </head>
+  <body>
+	<div class="title">
+     Image Gallery
+    </div>
+    <div>
+
+    </div>
+    <div class="content">
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+      <!-- <label for="fileToUpload" > Please select a Image</label> -->
+            <input type="file" name="file" id="fileToUpload">
+            <br>
+            <input type="submit" value="Upload Image">
+          </form>
+        <div class="images">
+          <!-- See below for accessing static images -->
+          <!-- <img src="{{ url_for('static', filename='img/TEST-IMG.png') }}" alt="Cool image, dude!"> -->
+          <!-- Accessing a list variable "contents" the view controller: -->
+          {% for item in contents %}
+            <img src={{ item }} style="width: 250px">
+          {% endfor %}
+        </div>
+    </div>
+  </body>
+</html>
+<style>
+    body{
+        
+        background-image: linear-gradient(to right, #f1b1b1 , #82e6e8);
+    }
+    .title{
+        position: absolute;
+  top: 20%;
+  left: 50%;
+  margin: -150px 0 0 -150px;
+  font-size: 40px;
+  font-weight: 700;
+    }
+    .title:hover{
+transform: scale(1.2);
+color: white;
+
+    }
+    label{
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    button{
+        margin-top: 20px;
+        width: 150px;
+        height: 40px;
+    border-radius:10%;
+    background-image: linear-gradient(to right,#82e6e8, #f1b1b1);
+    }
+    .content {
+        position: absolute;
+  top: 20%;
+ left: 40%;
+   margin: 10px;
+   padding-top: 60px;
+   padding-left: 20px;
+   border-radius: 10%;
+    background-color: white;
+    height: 150px;
+    width: 200px;
+    }
+</style>
