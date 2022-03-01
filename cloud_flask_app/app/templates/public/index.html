@@ -3,16 +3,45 @@
   <title>
     COMS-422  Project Phase 2
   </title>
+  <script>
+ function handleClick1(){
+   document.getElementById("login").style.visibility = "hidden";
+   document.getElementById("register").style.visibility = "visible";
+ }
+ function handleClick2(){
+   document.getElementById("login").style.visibility ="visible";
+   document.getElementById("register").style.visibility = "hidden";
+ }
+  </script>
+
 </head>
 <body>
   <!-- Accessing script from ../static/js/app.js -->
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-  <div class="login">
+  <div class="login" id="login">
     <h1>Login</h1>
     <form method="post">
       <input type="text" name="username" placeholder="Username" required="required" autocomplete="off"/>
       <input type="password" name="password" placeholder="Password" required="required"/>
+      <div class="registerBtn" onclick="handleClick1()">
+        <a>... create a new account</a>
+      </div>
+
       <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+    </form>
+  </div>
+  <div class="register" id="register">
+    <h1>Register</h1>
+    <form method="post">
+      <input type="text" name="username" placeholder="Username" required="required" autocomplete="off"/>
+      <input type="text" name="firstName" placeholder="First Name" required="required" autocomplete="off"/>
+      <input type="text" name="lastName" placeholder="Last Name" required="required" autocomplete="off"/>
+      <input type="password" name="password" placeholder="Password" required="required"/>
+      <div class="loginBtn" onclick="handleClick2()">
+        <a>... already have an account</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Sign me up.</button>
     </form>
   </div>
 </body>
@@ -35,6 +64,25 @@
 
 html { width: 100%; height:100%; overflow:hidden; }
 
+.registerBtn, .loginBtn {
+  display: flex;
+  align-items:flex-end;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  font-size: 12px;
+  color: grey;
+}
+a{
+  cursor:pointer;
+  width: 100%;
+  padding-left: 50%;
+}
+a:hover{
+  color: white;
+}
+.register{
+  visibility: hidden;
+}
 body { 
   width: 100%;
   height:100%;
@@ -47,7 +95,7 @@ body {
   background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg,  #670d10 0%,#092756 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
 }
-.login { 
+.login, .register { 
   position: absolute;
   top: 50%;
   left: 50%;
@@ -55,7 +103,7 @@ body {
   width:300px;
   height:300px;
 }
-.login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+.login h1, .register h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
 
 input { 
   width: 100%; 
