@@ -29,6 +29,10 @@ def index():
     
     return render_template("public/index.html")
 
-# @app.route("/about")
-# def about():
-#     return render_template("public/index.html")
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        # conn = 
+        return redirect("/")
+
+    return render_template("public/register.html")
