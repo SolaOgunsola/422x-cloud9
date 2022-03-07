@@ -1,12 +1,15 @@
-import os
-import boto3
 from app import app
 from flask import render_template, request, redirect, Response
 from werkzeug.utils import secure_filename
+import boto3
+from boto3.dynamodb.conditions import Key
+from os import environ
 
 # UPLOAD_FOLDER = "uploads"
-BUCKET = "photos422"
-
+BUCKET = str(environ.get('S3_BUCKET'))
+S3_SECRET = environ.get('S3_SECRET')
+S3_KEY = environ.get('S3_KEY')
+# USERNAME = environ.get('USERNAME')
 
 @app.route("/user/dashboard")
 def user_dashboard():
@@ -21,16 +24,24 @@ def upload():
     if request.method == "POST":
         f = request.files['file']
         resource = boto3.resource('s3')
-        bucket = resource.Bucket('photos422')
+        bucket = resource.Bucket(BUCKET)
         bucket.Object(f.filename).put(Body=f)
-    
+        print('!!!!!!!!!!! ')
+        # add to dynamodb
+        dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+        table = dynamodb.Table('Images')
+        ImageObj = {
+            "ImageName": f.filename,
+            "UserName": environ.get('USERNAME')
+        }
+        table.put_item(Item=ImageObj)
     return redirect("/user/dashboard")
 
 @app.route("/download", methods=['POST'])
 def download():
     obj_key = request.form['key']
     resource = boto3.resource('s3')
-    bucket = resource.Bucket('photos422')
+    bucket = resource.Bucket(BUCKET)
     file_obj = bucket.Object(obj_key).get()
 
     resp = Response(file_obj['Body'].read())
@@ -43,7 +54,7 @@ def download():
 def search():
     file_name = request.args.get("search")
     resource = boto3.resource('s3')
-    bucket = resource.Bucket('photos422')
+    bucket = resource.Bucket(BUCKET)
     object_list = bucket.objects.filter(Prefix=file_name)
 
     return render_template('user/dashboard.html', contents=object_list)
@@ -73,7 +84,7 @@ def upload_file(file_name, bucket):
 
 def get_bucket_files(bucket):
     resource = boto3.resource('s3')
-    bucket = resource.Bucket('photos422')
+    bucket = resource.Bucket(BUCKET)
     object_list = bucket.objects.all()
 
     return object_list

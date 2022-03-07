@@ -1,38 +1,46 @@
 from app import app
 from flask import render_template, request, redirect, url_for
-import pymysql
+import boto3
+from boto3.dynamodb.conditions import Key
+from os import environ
+
+S3_SECRET = environ.get('S3_SECRET')
+S3_KEY = environ.get('S3_KEY')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    print("here")	
-    conn = pymysql.connect(
-            host= 'database-1.czglra39ojmn.us-east-1.rds.amazonaws.com', 
-            port = 3306,
-            user = 'admin', 
-            password = 'password',
-            db = 'db',
-            )
-    with conn:
-            with conn.cursor() as cursor:
-                print("conn")
-                if request.method == 'POST':
-                    username = request.form['username']
-                    password = request.form['password']
-                    cur=conn.cursor()
-                    query = "SELECT password from users Where username = '" + str(username) + "'"
-                    print(query)
-                    cur.execute(query)
-                    output = cur.fetchall()
-                    if password == output[0][0]:
-                        print("check made")
-                        return redirect("/user/dashboard")    
-    
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+        table = dynamodb.Table('Users')
+        response =table.query(KeyConditionExpression=Key('username').eq(str(username)))
+        for i in response['Items']:
+            print(i)
+            checkPword = (i['password'])
+            if checkPword == password:
+                #redirect to new page
+                environ.update(USERNAME=username)
+                print('!!!!!!!')
+                print(environ.get('USERNAME'))
+                return redirect("/user/dashboard")    
     return render_template("public/index.html")
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         # conn = 
+        username = request.form['username']
+        password = request.form['password']
+        print(username)
+        print(password)
+        dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+        table = dynamodb.Table('Users')
+        dynamoCanBlowMe = {
+            "username": username,
+            "password": password
+        }
+        table.put_item(Item=dynamoCanBlowMe)
         return redirect("/")
 
     return render_template("public/register.html")
