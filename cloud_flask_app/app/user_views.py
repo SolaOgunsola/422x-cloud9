@@ -9,13 +9,17 @@ from os import environ
 BUCKET = str(environ.get('S3_BUCKET'))
 S3_SECRET = environ.get('S3_SECRET')
 S3_KEY = environ.get('S3_KEY')
-# USERNAME = environ.get('USERNAME')
+contents = None
 
 @app.route("/user/dashboard")
 def user_dashboard():
     # show_image retrieves a list of temporary, public image urls
     # contents = show_image(BUCKET)
-    contents = get_bucket_files(BUCKET)
+    global contents
+    if(environ.get('LOGIN') == '0'):
+        return redirect("/")
+    print(environ.get('LOGIN'))
+    contents = get_bucket_files(environ.get('USERNAME'))
     # contents is passed to the dashboard.html file
     return render_template("user/dashboard.html", contents=contents)
 
@@ -55,7 +59,12 @@ def search():
     file_name = request.args.get("search")
     resource = boto3.resource('s3')
     bucket = resource.Bucket(BUCKET)
-    object_list = bucket.objects.filter(Prefix=file_name)
+    # object_list = bucket.objects.filter(Prefix=file_name)
+    object_list = []
+    global contents
+    for word in contents:
+        if(file_name in word.key):
+            object_list.append(word)
 
     return render_template('user/dashboard.html', contents=object_list)
 
@@ -82,9 +91,19 @@ def upload_file(file_name, bucket):
     response = s3_client.upload_file(file_name, bucket, object_name)
     return response
 
-def get_bucket_files(bucket):
+def get_bucket_files(username):
     resource = boto3.resource('s3')
     bucket = resource.Bucket(BUCKET)
-    object_list = bucket.objects.all()
+    allImages = bucket.objects.all()
+    toRet = []
+    dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+    table = dynamodb.Table('Images')
+    userImages = table.query(KeyConditionExpression=Key('UserName').eq(username))
 
-    return object_list
+    for i in userImages['Items']:
+        for image in allImages:
+            print(i['ImageName'])
+            if(i['ImageName'] == image.key):
+                toRet.append(image)
+
+    return toRet

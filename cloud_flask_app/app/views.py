@@ -21,6 +21,7 @@ def index():
             if checkPword == password:
                 #redirect to new page
                 environ.update(USERNAME=username)
+                environ.update(LOGIN='1')
                 print('!!!!!!!')
                 print(environ.get('USERNAME'))
                 return redirect("/user/dashboard")    
