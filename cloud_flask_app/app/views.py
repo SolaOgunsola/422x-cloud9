@@ -25,7 +25,7 @@ def index():
                 print('!!!!!!!')
                 print(environ.get('USERNAME'))
                 return redirect("/user/dashboard")    
-    return render_template("public/index.html")
+    return render_template("public/ADDICAR.html")
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
