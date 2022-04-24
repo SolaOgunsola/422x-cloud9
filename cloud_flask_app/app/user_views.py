@@ -18,7 +18,7 @@ def user_dashboard():
     # contents = show_image(BUCKET)
     global contents
     # if(environ.get('LOGIN') == '0'):
-    #     return redirect("user/login")
+    #     return redirect("")
     # print(environ.get('LOGIN'))
     # contents = get_bucket_files(environ.get('USERNAME'))
     dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
@@ -26,7 +26,7 @@ def user_dashboard():
     response = table.scan()
     data = response['Items']
     # contents is passed to the dashboard.html file
-    return render_template("user/dashboard.html", contents=data)
+    return render_template("public/index.html", contents=data)
 
 @app.route("/upload", methods=['POST'])
 def upload():
