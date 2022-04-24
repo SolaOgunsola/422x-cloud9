@@ -7,7 +7,8 @@ from os import environ
 S3_SECRET = environ.get('S3_SECRET')
 S3_KEY = environ.get('S3_KEY')
 
-@app.route('/', methods=['GET', 'POST'])
+# TODO update? since login has mo
+@app.route('/login', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         username = request.form['username']
@@ -22,9 +23,8 @@ def index():
                 #redirect to new page
                 environ.update(USERNAME=username)
                 environ.update(LOGIN='1')
-                print('!!!!!!!')
                 print(environ.get('USERNAME'))
-                return redirect("/public/AddICar.html")    
+                return render_template("public/index.html")    
     return render_template("public/index.html")
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -42,6 +42,6 @@ def register():
             "password": password
         }
         table.put_item(Item=dynamoCanBlowMe)
-        return redirect("/")
+        return render_template("user/login.html")
 
     return render_template("public/register.html")
