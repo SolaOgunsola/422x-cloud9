@@ -60,47 +60,34 @@ textarea{
 
     <form method="POST">
       <div class="field">
-        <label> Make :</label>
-        <input type="text" name="make" class="make" required />
-      <div class="field">
-        <label> Manufacturer :</label>
-        <input type="text" name="manu" class="manufacturer" required />
+        <label>Category:</label>
+        <select name="category">
+          <option value="event">Events</option>
+          <option value="lostandfound">Lost & Found</option>
+          <option value="class">Classes</option>
+          <option value="volunteer">Volunteering</option>
+          <option value="rideshare">Rideshare</option>
+        </select>
       </div>
       <div class="field">
-        <label> Description :</label>
-        <textarea class="description" name="descrip" required></textarea>
+        <div class="field">
+          <label> Description :</label>
+          <textarea class="description" name="descrip" required></textarea>
+        </div>
+        <label> Location :</label>
+        <input type="text" name="location" class="make" required />
       </div>
       <div class="field">
-        <label> Price :</label>
-        <input class="price" name="price" type="number" required />
+        <label> Time :</label>
+        <input type="text" name="time" class="location" required />
       </div>
       <div class="field">
-        <label> Color :</label>
-        <input class="color" name="color" type="text" required />
-      </div>
-
-      <div class="field">
-        <label> Miles :</label>
-        <input type="number" name = "miles" class="miles" required />
-      </div>
-      <div class="field">
-        <label> Year :</label>
-        <input type="number" name="year" class="year" required />
-      </div>
-      <div class="field">
-        <label> Condition :</label>
-        <select class="condition" name="condition">
-          <option value=”used”>Used</option>
-          <option value=”new”>New </option>
-          </select>
+        <label> Requirements :</label>
+        <input class="price" name="requirements" type="number" required />
       </div>
       <div class="field">
         <label> Phone Number :</label>
         <input type="tel" id="phone" name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-      </div>
-      <div class="field">
-        <label> City :</label>
-        <input type="text" class="city" name="city" required />
       </div>
 
       <input type="submit" />

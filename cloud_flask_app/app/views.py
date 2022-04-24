@@ -24,7 +24,7 @@ def index():
                 environ.update(LOGIN='1')
                 print('!!!!!!!')
                 print(environ.get('USERNAME'))
-                return redirect("/public/AddICar.html")    
+                return redirect("user/dashboard")    
     return render_template("public/index.html")
 
 @app.route("/register", methods=['GET', 'POST'])

@@ -109,11 +109,12 @@ def get_bucket_files(username):
 
     return toRet
 
-@app.route('/AddICar', methods=['GET', 'POST'])
-def addICar():
+@app.route('/user/AddForSale', methods=['GET', 'POST'])
+def addForSale():
     print("Request Method: " + request.method)
     if request.method == 'POST':
         make = request.form['make']
+        category = request.form['category']
         manu = request.form['manu']
         descrip = request.form['descrip']
         price = request.form['price']
@@ -128,7 +129,7 @@ def addICar():
         table = dynamodb.Table('ForSale')
         dTable = {
             "itemCode": time.time_ns(),
-            "category": "car",
+            "category": category,
             "City": city,
             "Color": color,
             "Condition": condition,
@@ -142,6 +143,90 @@ def addICar():
         }
         print(dTable)
         table.put_item(Item=dTable)
-        return render_template("user/dashboard.html")
+        return redirect("/user/dashboard")
 
-    return render_template("user/AddICar.html")
+    return render_template("user/AddForSale.html")
+
+@app.route('/user/AddCommunity', methods=['GET', 'POST'])
+def addCommunity():
+    print("Request Method: " + request.method)
+    if request.method == 'POST':
+        dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+        table = dynamodb.Table('Community')
+        dTable = {
+            "itemCode": time.time_ns(),
+            "category": request.form['category'],
+            "description": request.form['description'],
+            "location": request.form['location'],
+            "time": request.form['time'],
+            "requirements": request.form['requirements'],
+            "PhoneNumber": request.form['phone']
+        }
+        print(dTable)
+        table.put_item(Item=dTable)
+        return redirect("/user/dashboard")
+
+    return render_template("user/AddCommunity.html")
+
+@app.route('/user/AddHousing', methods=['GET', 'POST'])
+def addHousing():
+    print("Request Method: " + request.method)
+    if request.method == 'POST':
+        dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+        table = dynamodb.Table('Community')
+        dTable = {
+            "itemCode": time.time_ns(),
+            "category": request.form['category'],
+            "location": request.form['location'],
+            "description": request.form['description'],
+            "rent": request.form['rent'],
+            "description": request.form['description'],
+            "PhoneNumber": request.form['phone']
+        }
+        print(dTable)
+        table.put_item(Item=dTable)
+        return redirect("/user/dashboard")
+
+    return render_template("user/AddHousing.html")
+
+@app.route('/user/AddJob', methods=['GET', 'POST'])
+def addJob():
+    print("Request Method: " + request.method)
+    if request.method == 'POST':
+        dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+        table = dynamodb.Table('Community')
+        dTable = {
+            "itemCode": time.time_ns(),
+            "category": request.form['category'],
+            "experience": request.form['experience'],
+            "salary": request.form['salary'],
+            "location": request.form['location'],
+            "description": request.form['description'],
+            "PhoneNumber": request.form['phone']
+        }
+        print(dTable)
+        table.put_item(Item=dTable)
+        return redirect("/user/dashboard")
+
+    return render_template("user/AddJob.html")
+
+@app.route('/user/AddService', methods=['GET', 'POST'])
+def addService():
+    print("Request Method: " + request.method)
+    if request.method == 'POST':
+        dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+        table = dynamodb.Table('Community')
+        dTable = {
+            "itemCode": time.time_ns(),
+            "category": request.form['category'],
+            "availability": request.form['availability'],
+            "location": request.form['location'],
+            "description": request.form['description'],
+            "price": request.form['price'],
+            "PhoneNumber": request.form['phone']
+        }
+        print(dTable)
+        table.put_item(Item=dTable)
+        return redirect("/user/dashboard")
+
+    return render_template("user/AddService.html")
