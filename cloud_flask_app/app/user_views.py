@@ -148,3 +148,14 @@ def addICar():
         return render_template("user/dashboard.html")
 
     return render_template("user/AddICar.html")
+
+@app.route('/ListView', methods=['GET'])
+def get_items(category):
+    dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+    table = dynamodb.Table('Users')
+    response =table.query()
+    toAdd = []
+    for i in response['Items']:
+        if category == (i['category']):
+            toAdd.append(i)
+    return render_template('public/ListView.html', contents=toAdd)
