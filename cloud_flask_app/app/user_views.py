@@ -17,9 +17,6 @@ def user_dashboard():
     # show_image retrieves a list of temporary, public image urls
     # contents = show_image(BUCKET)
     global contents
-    # if(environ.get('LOGIN') == '0'):
-    #     return redirect("")
-    # print(environ.get('LOGIN'))
     # contents = get_bucket_files(environ.get('USERNAME'))
     dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
     table = dynamodb.Table('Images')
