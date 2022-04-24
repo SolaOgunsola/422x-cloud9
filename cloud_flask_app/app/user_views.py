@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 import boto3
 from boto3.dynamodb.conditions import Key
 from os import environ
+import time
 
 # UPLOAD_FOLDER = "uploads"
 BUCKET = str(environ.get('S3_BUCKET'))
@@ -107,3 +108,40 @@ def get_bucket_files(username):
                 toRet.append(image)
 
     return toRet
+
+@app.route('/AddICar', methods=['GET', 'POST'])
+def addICar():
+    print("Request Method: " + request.method)
+    if request.method == 'POST':
+        make = request.form['make']
+        manu = request.form['manu']
+        descrip = request.form['descrip']
+        price = request.form['price']
+        color = request.form['color']
+        miles = request.form['miles']
+        year = request.form['year']
+        condition = request.form['condition']
+        phone = request.form['phone']
+        city = request.form['city']
+
+        dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+        table = dynamodb.Table('ForSale')
+        dTable = {
+            "itemCode": time.time_ns(),
+            "category": "car",
+            "City": city,
+            "Color": color,
+            "Condition": condition,
+            "Manufacturer": manu,
+            "Make": make,
+            "Miles": miles,
+            "PhoneNumber": phone,
+            "Description": descrip,
+            "Price": price,
+            "Year": year,
+        }
+        print(dTable)
+        table.put_item(Item=dTable)
+        return render_template("user/dashboard.html")
+
+    return render_template("user/AddICar.html")
