@@ -26,7 +26,7 @@ def get_forsale_items(category):
         if category == (i['category']):
             print(i)
             contents.append(i)
-    return render_template('user/ListViewForSale.html', contents=contents)
+    return render_template('user/ListViewForSale.html', title=category, contents=contents)
 
 
 @app.route('/Community/<category>', methods=['GET', 'POST'])
@@ -39,7 +39,7 @@ def get_community_items(category):
         if category == (i['category']):
             print(i)
             contents.append(i)
-    return render_template('user/ListViewCommunity.html', contents=contents)
+    return render_template('user/ListViewCommunity.html',title=category, contents=contents)
 
 @app.route('/Housing/<category>', methods=['GET', 'POST'])
 def get_housing_items(category):
@@ -51,7 +51,7 @@ def get_housing_items(category):
         if category == (i['category']):
             print(i)
             contents.append(i)
-    return render_template('user/ListViewHousing.html', contents=contents)
+    return render_template('user/ListViewHousing.html',title=category, contents=contents)
 
 @app.route('/Jobs/<category>', methods=['GET', 'POST'])
 def get_jobs_items(category):
@@ -63,7 +63,7 @@ def get_jobs_items(category):
         if category == (i['category']):
             print(i)
             contents.append(i)
-    return render_template('user/ListViewJob.html', contents=contents)
+    return render_template('user/ListViewJob.html',title=category, contents=contents)
 
 @app.route('/Services/<category>', methods=['GET', 'POST'])
 def get_services_items(category):
@@ -75,7 +75,7 @@ def get_services_items(category):
         if category == (i['category']):
             print(i)
             contents.append(i)
-    return render_template('user/ListViewServices.html', contents=contents)
+    return render_template('user/ListViewServices.html',title=category, contents=contents)
 
 
 @app.route('/user/AddForSale', methods=['GET', 'POST'])
