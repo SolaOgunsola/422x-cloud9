@@ -24,7 +24,7 @@
 
     .item {
       width: 80%;
-      margin: 0 10%;
+      margin: 20px 10%;
       border: 2px solid black;
       border-radius: 10px;
       padding: 20px;
@@ -58,7 +58,7 @@
 </head>
 
 <body>
-  <div class="title">Listings for {title}</div>
+  <div class="title">Listings for {{title}}</div>
   <div class="addItem"><a href="./AddItem.html">Click Here to add Item </a></div>
   <div class="list">
     {% for item in contents %}

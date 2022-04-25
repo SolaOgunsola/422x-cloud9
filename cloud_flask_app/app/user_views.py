@@ -17,7 +17,7 @@ def user_dashboard():
     return render_template("public/index.html")
 
 @app.route('/ForSale/<category>', methods=['GET', 'POST'])
-def get_items(category):
+def get_forsale_items(category):
     dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
     table = dynamodb.Table('ForSale')
     response =table.scan()
@@ -26,7 +26,57 @@ def get_items(category):
         if category == (i['category']):
             print(i)
             contents.append(i)
-    return render_template('user/ListViewForSale.html', contents=contents)
+    return render_template('user/ListViewForSale.html', title=category, contents=contents)
+
+
+@app.route('/Community/<category>', methods=['GET', 'POST'])
+def get_community_items(category):
+    dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+    table = dynamodb.Table('Community')
+    response =table.scan()
+    contents = []
+    for i in response['Items']:
+        if category == (i['category']):
+            print(i)
+            contents.append(i)
+    return render_template('user/ListViewCommunity.html',title=category, contents=contents)
+
+@app.route('/Housing/<category>', methods=['GET', 'POST'])
+def get_housing_items(category):
+    dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+    table = dynamodb.Table('Housing')
+    response =table.scan()
+    contents = []
+    for i in response['Items']:
+        if category == (i['category']):
+            print(i)
+            contents.append(i)
+    return render_template('user/ListViewHousing.html',title=category, contents=contents)
+
+@app.route('/Jobs/<category>', methods=['GET', 'POST'])
+def get_jobs_items(category):
+    dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+    table = dynamodb.Table('Jobs')
+    response =table.scan()
+    contents = []
+    for i in response['Items']:
+        if category == (i['category']):
+            print(i)
+            contents.append(i)
+    return render_template('user/ListViewJob.html',title=category, contents=contents)
+
+@app.route('/Services/<category>', methods=['GET', 'POST'])
+def get_services_items(category):
+    dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+    table = dynamodb.Table('Services')
+    response =table.scan()
+    contents = []
+    for i in response['Items']:
+        if category == (i['category']):
+            print(i)
+            contents.append(i)
+    return render_template('user/ListViewServices.html',title=category, contents=contents)
+
 
 @app.route('/user/AddForSale', methods=['GET', 'POST'])
 def addForSale():
