@@ -12,17 +12,18 @@ S3_SECRET = environ.get('S3_SECRET')
 S3_KEY = environ.get('S3_KEY')
 contents = None
 
-@app.route("/user/dashboard")
+@app.route("/")
 def user_dashboard():
     # show_image retrieves a list of temporary, public image urls
     # contents = show_image(BUCKET)
     global contents
-    if(environ.get('LOGIN') == '0'):
-        return redirect("/")
-    print(environ.get('LOGIN'))
-    contents = get_bucket_files(environ.get('USERNAME'))
+    # contents = get_bucket_files(environ.get('USERNAME'))
+    dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+    table = dynamodb.Table('Images')
+    response = table.scan()
+    data = response['Items']
     # contents is passed to the dashboard.html file
-    return render_template("user/dashboard.html", contents=contents)
+    return render_template("public/index.html", contents=data)
 
 @app.route("/upload", methods=['POST'])
 def upload():
@@ -31,7 +32,6 @@ def upload():
         resource = boto3.resource('s3')
         bucket = resource.Bucket(BUCKET)
         bucket.Object(f.filename).put(Body=f)
-        print('!!!!!!!!!!! ')
         # add to dynamodb
         dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
         table = dynamodb.Table('Images')
@@ -67,7 +67,7 @@ def search():
         if(file_name in word.key):
             object_list.append(word)
 
-    return render_template('user/dashboard.html', contents=object_list)
+    return render_template('/', contents=object_list)
 
 def show_image(bucket):
     s3_client = boto3.client('s3')
