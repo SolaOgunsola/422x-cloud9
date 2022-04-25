@@ -16,35 +16,17 @@ contents = None
 def user_dashboard():
     return render_template("public/index.html")
 
-@app.route("/upload", methods=['POST'])
-def upload():
-    if request.method == "POST":
-        f = request.files['file']
-        resource = boto3.resource('s3')
-        bucket = resource.Bucket(BUCKET)
-        bucket.Object(f.filename).put(Body=f)
-        # add to dynamodb
-        dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
-        table = dynamodb.Table('Images')
-        ImageObj = {
-            "ImageName": f.filename,
-            "UserName": environ.get('USERNAME')
-        }
-        table.put_item(Item=ImageObj)
-    return redirect("/user/dashboard")
-
-@app.route("/download", methods=['POST'])
-def download():
-    obj_key = request.form['key']
-    resource = boto3.resource('s3')
-    bucket = resource.Bucket(BUCKET)
-    file_obj = bucket.Object(obj_key).get()
-
-    resp = Response(file_obj['Body'].read())
-    resp.headers['Content-Disposition'] = 'attachment;filename=' + format(obj_key)
-    resp.mimetype = 'text/plain'
-
-    return resp
+@app.route('/ForSale/<category>', methods=['GET', 'POST'])
+def get_items(category):
+    dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+    table = dynamodb.Table('ForSale')
+    response =table.scan()
+    contents = []
+    for i in response['Items']:
+        if category == (i['category']):
+            print(i)
+            contents.append(i)
+    return render_template('user/ListViewForSale.html', contents=contents)
 
 @app.route('/user/AddForSale', methods=['GET', 'POST'])
 def addForSale():
@@ -83,18 +65,6 @@ def addForSale():
         return redirect("/user/dashboard")
 
     return render_template("user/AddForSale.html")
-
-@app.route('/ForSale', methods=['GET', 'POST'])
-def get_items():
-    category = request.form['category']
-    dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
-    table = dynamodb.Table('Users')
-    response =table.query()
-    contents = []
-    for i in response['items']:
-        if category == (i['category']):
-            contents.append(i)
-    return render_template('public/ListView.html', contents)
 
 @app.route('/user/AddCommunity', methods=['GET', 'POST'])
 def addCommunity():

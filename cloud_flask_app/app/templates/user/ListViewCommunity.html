@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>For Sale</title>
+  <title>For Community</title>
   <style>
     body {
       margin: 0;
@@ -30,7 +30,6 @@
       padding: 20px;
       text-align: center;
     }
-
     .addItem {
       text-align: center;
       border: 2px solid black;
@@ -41,28 +40,15 @@
       border-radius: 20px;
       background-color: grey;
     }
-
     label {
       font-weight: 800;
     }
-
-    .detail {
-      display: none;
-    }
-
     .brief {
       display: grid;
       gap: 10px;
       grid: 20px / auto auto auto;
     }
 
-    .detailed {
-      margin-top: 30px;
-      display: grid;
-
-      gap: 10px;
-      grid: 20px / auto auto auto;
-    }
 
     a {
       text-decoration: none;
@@ -70,14 +56,6 @@
     }
   </style>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-  $(document).ready(function () {
-    $(".item").click(function () {
-      $(".detail").toggle();
-    });
-  });
-</script>
 
 <body>
   <div class="title">Listings for {title}</div>
@@ -87,51 +65,32 @@
     <div class="item">
       <div class="brief">
         <div class="attribute">
-          <label> Manufacturer :</label>
-         {{ item.Manufacturer }}
+          <label> Category :</label>
+         {{ item.category }}
         </div>
         <div class="attribute">
-          <label> Description :</label>
-          {{ item.Description }}
+          <label> Time :</label>
+          {{ item.time }}
         </div>
-       
         <div class="attribute">
-          <label> Price :</label>
-          {{ item.Price }}
+          <label> Location :</label>
+          {{ item.location }}
         </div>
-      </div>
-      <div class="detail">
-        <div class="detailed">
-          <div class="attribute">
-            <label> Make :</label>
-            {{ item.Make }}
+        <div class="attribute">
+            <label> Description :</label>
+            {{ item.description }}
           </div>
           <div class="attribute">
-            <label> Year :</label>
-            {{ item.Year }}
-          </div>
-          <div class="attribute">
-            <label> City :</label>
-            {{ item.City }}
+            <label> Requirements :</label>
+            {{ item.requirements }}
           </div>
           <div class="attribute">
             <label> Phone Number :</label>
             {{ item.PhoneNumber }}
           </div>
-          <div class="attribute">
-            <label> Color :</label>
-            {{ item.Color }}
-          </div>
-          <div class="attribute">
-            <label> Condition :</label>
-            {{ item.Condition }}
-          </div>
-        </div>
       </div>
-    </div>
-  </div>
+      </div>
   {% endfor %}
-
 </body>
 
 </html>
