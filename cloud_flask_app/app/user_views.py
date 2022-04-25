@@ -17,7 +17,7 @@ def user_dashboard():
     return render_template("public/index.html")
 
 @app.route('/ForSale/<category>', methods=['GET', 'POST'])
-def get_items(category):
+def get_forsale_items(category):
     dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
     table = dynamodb.Table('ForSale')
     response =table.scan()
@@ -30,7 +30,7 @@ def get_items(category):
 
 
 @app.route('/Community/<category>', methods=['GET', 'POST'])
-def get_items(category):
+def get_community_items(category):
     dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
     table = dynamodb.Table('Community')
     response =table.scan()
@@ -42,7 +42,7 @@ def get_items(category):
     return render_template('user/ListViewCommunity.html', contents=contents)
 
 @app.route('/Housing/<category>', methods=['GET', 'POST'])
-def get_items(category):
+def get_housing_items(category):
     dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
     table = dynamodb.Table('Housing')
     response =table.scan()
@@ -54,7 +54,7 @@ def get_items(category):
     return render_template('user/ListViewHousing.html', contents=contents)
 
 @app.route('/Jobs/<category>', methods=['GET', 'POST'])
-def get_items(category):
+def get_jobs_items(category):
     dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
     table = dynamodb.Table('Jobs')
     response =table.scan()
@@ -66,7 +66,7 @@ def get_items(category):
     return render_template('user/ListViewJob.html', contents=contents)
 
 @app.route('/Services/<category>', methods=['GET', 'POST'])
-def get_items(category):
+def get_services_items(category):
     dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
     table = dynamodb.Table('Services')
     response =table.scan()
