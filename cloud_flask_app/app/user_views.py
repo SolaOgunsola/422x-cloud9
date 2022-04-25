@@ -18,12 +18,7 @@ def user_dashboard():
     # contents = show_image(BUCKET)
     global contents
     # contents = get_bucket_files(environ.get('USERNAME'))
-    dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
-    table = dynamodb.Table('Images')
-    response = table.scan()
-    data = response['Items']
-    # contents is passed to the dashboard.html file
-    return render_template("public/index.html", contents=data)
+    return render_template("public/index.html")
 
 @app.route("/upload", methods=['POST'])
 def upload():
@@ -146,13 +141,14 @@ def addICar():
 
     return render_template("user/AddICar.html")
 
-@app.route('/ListView', methods=['GET'])
-def get_items(category):
+@app.route('/ForSale', methods=['GET', 'POST'])
+def get_items():
+    category = request.form['category']
     dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
     table = dynamodb.Table('Users')
     response =table.query()
-    toAdd = []
-    for i in response['Items']:
+    contents = []
+    for i in response['items']:
         if category == (i['category']):
-            toAdd.append(i)
-    return render_template('public/ListView.html', contents=toAdd)
+            contents.append(i)
+    return render_template('public/ListView.html', contents)

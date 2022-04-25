@@ -71,63 +71,42 @@
   <body>
     <div class="title">Listings for Car</div>
     <div class="addItem"><a href="./AddItem.html">Click Here to add Item </a></div>
-    <div class="list">
-      <div class="item">
-        <div class="brief">
-          <div class="attribute">
-            <label> Description :</label>
-            Honda 2012 Black
-          </div>
-          <div class="attribute">
-            <label> Price :</label>
-            $3000
-          </div>
-          <div class="attribute">
-            <label> Color :</label>
-            Black
-          </div>
-        </div>
-        <div class="detail">
-          <div class="detailed">
-            <div class="attribute">
-              <label> Model :</label>
-              XT
-            </div>
-            <div class="attribute">
-              <label> Manufacturer :</label>
-              Honda
-            </div>
-            <div class="attribute">
-              <label> Miles :</label>
-              20000
-            </div>
-            <div class="attribute">
-              <label> Year :</label>
-              2012
-            </div>
-            <div class="attribute">
-              <label> Condition :</label>
-              Used
-            </div>
-            <div class="attribute">
-              <label> Miles :</label>
-              Honda 2012 Black
-            </div>
-            <div class="attribute">
-              <label> Phone Number :</label>
-              5158178888
-            </div>
-            <div class="attribute">
-              <label> City :</label>
-              Ames
-            </div>
-            <div class="attribute">
-              <label> City :</label>
-              Honda 2012 Black
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <table class="table table-stripped">
+      <tr>
+        <th>File</th>
+        <th></th>
+      </tr>
+      {% for item in contents %}
+      <tr>
+          <td>
+            <p>{{ item.Make }}</p>
+            <!-- <img src={{ item[0] }} style="width: 250px"></td> -->
+          <td>
+            <p>{{ item.Manufacturer }}</p>
+          </td>
+          <td>
+            <p>{{ item.Year }}</p>
+          </td>
+          <td>
+            <p>{{ item.City }}</p>
+          </td>
+          <td>
+            <p>{{ item.PhoneNumber }}</p>
+          </td>
+          <td>
+            <p>{{ item.Price }}</p>
+          </td>
+          <td>
+            <p>{{ item.Color }}</p>
+          </td>
+          <td>
+            <p>{{ item.Condition }}</p>
+          </td>
+          <td>
+            <p>{{ item.Description }}</p>
+          </td>
+      </tr>
+      {% endfor %}
+    </table>
   </body>
 </html>
