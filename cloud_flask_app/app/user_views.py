@@ -127,7 +127,7 @@ def addHousing():
             "itemCode": time.time_ns(),
             "category": request.form['category'],
             "location": request.form['location'],
-            "description": request.form['description'],
+            "size": request.form['size'],
             "rent": request.form['rent'],
             "description": request.form['description'],
             "PhoneNumber": request.form['phone']
