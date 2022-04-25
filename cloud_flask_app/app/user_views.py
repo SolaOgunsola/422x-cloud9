@@ -46,6 +46,19 @@ def download():
 
     return resp
 
+
+@app.route('/ForSale/<category>', methods=['GET', 'POST'])
+def get_items(category):
+    dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+    table = dynamodb.Table('ForSale')
+    response =table.scan()
+    contents = []
+    for i in response['Items']:
+        if category == (i['category']):
+            print(i)
+            contents.append(i)
+    return render_template('user/ListViewForSale.html', contents=contents)
+
 @app.route('/user/AddForSale', methods=['GET', 'POST'])
 def addForSale():
     print("Request Method: " + request.method)
@@ -83,18 +96,6 @@ def addForSale():
         return redirect("/user/dashboard")
 
     return render_template("user/AddForSale.html")
-
-@app.route('/ForSale/<category>', methods=['GET', 'POST'])
-def get_items(category):
-    dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
-    table = dynamodb.Table('ForSale')
-    response =table.scan()
-    contents = []
-    for i in response['Items']:
-        if category == (i['category']):
-            print(i)
-            contents.append(i)
-    return render_template('user/ListViewForSale.html', contents=contents)
 
 @app.route('/user/AddCommunity', methods=['GET', 'POST'])
 def addCommunity():
