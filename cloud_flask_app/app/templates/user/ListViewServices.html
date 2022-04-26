@@ -64,30 +64,42 @@
     {% for item in contents %}
     <div class="item">
       <div class="brief">
+        {% if item.category != null %}
         <div class="attribute">
           <label> Category :</label>
          {{ item.category }}
         </div>
-        <div class="attribute">
+           {% endif %}
+         {% if item.availability != null %}
+         <div class="attribute">
           <label> Availability :</label>
           {{ item.availability }}
         </div>
-        <div class="attribute">
+           {% endif %}
+         {% if item.location != null %}
+         <div class="attribute">
           <label> Location :</label>
           {{ item.location }}
         </div>
-        <div class="attribute">
+           {% endif %}
+         {% if item.description != null %}
+         <div class="attribute">
             <label> Description :</label>
             {{ item.description }}
           </div>
-          <div class="attribute">
+             {% endif %}
+         {% if item.price != null %}
+         <div class="attribute">
             <label> Price :</label>
             {{ item.price }}
           </div>
-          <div class="attribute">
+             {% endif %}
+         {% if item.PhoneNumber != null %}
+         <div class="attribute">
             <label> Phone Number :</label>
             {{ item.PhoneNumber }}
           </div>
+          {% endif %}
       </div>
       </div>
   {% endfor %}

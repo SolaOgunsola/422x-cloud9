@@ -46,20 +46,8 @@
       font-weight: 800;
     }
 
-    .detail {
-      display: none;
-    }
-
     .brief {
       display: grid;
-      gap: 10px;
-      grid: 20px / auto auto auto;
-    }
-
-    .detailed {
-      margin-top: 30px;
-      display: grid;
-
       gap: 10px;
       grid: 20px / auto auto auto;
     }
@@ -70,64 +58,80 @@
     }
   </style>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-  $(document).ready(function () {
-    $(".item").click(function () {
-      $(".detail").toggle();
-    });
-  });
-</script>
+
 
 <body>
-  
+
   <div class="title">Listings for {{title}}</div>
   <div class="addItem"><a href="./AddItem.html">Click Here to add Item </a></div>
   <div class="list">
     {% for item in contents %}
+
     <div class="item">
       <div class="brief">
+        {% if item.Manufacturer != null %}
         <div class="attribute">
           <label> Manufacturer :</label>
-         {{ item.Manufacturer }}
+          {{ item.Manufacturer }}
         </div>
+        {% endif %}
+        
+        {% if item.Make != null %}
+        <div class="attribute">
+          <label> Make :</label>
+          {{ item.Make }}
+        </div>
+        {% endif %}
+
+        {% if item.Year != null %}
+        <div class="attribute">
+          <label> Year :</label>
+          {{ item.Year }}
+        </div>
+        {% endif %}
+
+        {% if item.Color != null %}
+        <div class="attribute">
+          <label> Color :</label>
+          {{ item.Color }}
+        </div>
+        {% endif %}
+
+        {% if item.PhoneNumber != null %}
+        <div class="attribute">
+          <label> Phone Number :</label>
+          {{ item.PhoneNumber }}
+        </div>
+        {% endif %}
+
+
+        {% if item.Description != null %}
         <div class="attribute">
           <label> Description :</label>
           {{ item.Description }}
         </div>
-       
+        {% endif %}
+
+        {% if item.Price != null %}
         <div class="attribute">
           <label> Price :</label>
           {{ item.Price }}
         </div>
-      </div>
-      <div class="detail">
-        <div class="detailed">
-          <div class="attribute">
-            <label> Make :</label>
-            {{ item.Make }}
-          </div>
-          <div class="attribute">
-            <label> Year :</label>
-            {{ item.Year }}
-          </div>
-          <div class="attribute">
-            <label> City :</label>
-            {{ item.City }}
-          </div>
-          <div class="attribute">
-            <label> Phone Number :</label>
-            {{ item.PhoneNumber }}
-          </div>
-          <div class="attribute">
-            <label> Color :</label>
-            {{ item.Color }}
-          </div>
-          <div class="attribute">
-            <label> Condition :</label>
-            {{ item.Condition }}
-          </div>
+        {% endif %}
+
+        {% if item.City != null %}
+        <div class="attribute">
+          <label> City :</label>
+          {{ item.City }}
         </div>
+        {% endif %}
+
+        {% if item.Condition != null %}
+        <div class="attribute">
+          <label> Condition :</label>
+          {{ item.Condition }}
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>
