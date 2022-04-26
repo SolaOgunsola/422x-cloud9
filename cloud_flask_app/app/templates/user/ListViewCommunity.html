@@ -66,6 +66,7 @@
   {% endif %}
   <div class="list">
     {% for item in contents %}
+    {%if item.category == 'events'%}
     <div class="item">
       <div class="brief">
         {% if item.category != null %}
@@ -74,38 +75,207 @@
          {{ item.category }}
         </div>
         {% endif %}
-        {% if item.time != null %}
+        {% if item.Time != null %}
          <div class="attribute">
           <label> Time :</label>
-          {{ item.time }}
+          {{ item.Time }}
         </div>
          {% endif %}
-        {% if item.location != null %}
+        {% if item.Location != null %}
          <div class="attribute">
           <label> Location :</label>
-          {{ item.location }}
+          {{ item.Location }}
         </div>
          {% endif %}
-        {% if item.description != null %}
+         {% if item.Type != null %}
+         <div class="attribute">
+          <label> Type of Event :</label>
+          {{ item.Type }}
+        </div>
+         {% endif %}
+        {% if item.Description != null %}
          <div class="attribute">
             <label> Description :</label>
-            {{ item.description }}
+            {{ item.Description }}
           </div>
            {% endif %}
-          {% if item.requirements != null %}
+          {% if item.Requirements != null %}
            <div class="attribute">
             <label> Requirements :</label>
             {{ item.requirements }}
           </div>
            {% endif %}
-          {% if item.PhoneNumber != null %}
+          {% if item["Phone Number"] != null %}
            <div class="attribute">
             <label> Phone Number :</label>
-            {{ item.PhoneNumber }}
+            {{ item["Phone Number"] }}
           </div>
            {% endif %}
       </div>
       </div>
+      {% endif %}
+      {%if item.category == 'lost and found'%}
+    <div class="item">
+      <div class="brief">
+        {% if item.category != null %}
+        <div class="attribute">
+          <label> Category :</label>
+         {{ item.category }}
+        </div>
+        {% endif %}
+        {% if item.Location != null %}
+         <div class="attribute">
+          <label> Pick Up Location :</label>
+          {{ item.Location }}
+        </div>
+         {% endif %}
+        {% if item.Description != null %}
+         <div class="attribute">
+            <label> Description :</label>
+            {{ item.Description }}
+          </div>
+           {% endif %}
+          {% if item.Time != null %}
+           <div class="attribute">
+            <label> Pick Up Availability :</label>
+            {{ item.Time }}
+          </div>
+           {% endif %}
+          {% if item["Phone Number"] != null %}
+           <div class="attribute">
+            <label> Phone Number :</label>
+            {{ item["Phone Number"] }}
+          </div>
+           {% endif %}
+      </div>
+      </div>
+      {% endif %}
+      {%if item.category == 'classes'%}
+    <div class="item">
+      <div class="brief">
+        {% if item.category != null %}
+        <div class="attribute">
+          <label> Category :</label>
+         {{ item.category }}
+        </div>
+        {% endif %}
+        {% if item.Location != null %}
+         <div class="attribute">
+          <label> Pick Up Location :</label>
+          {{ item.Location }}
+        </div>
+         {% endif %}
+         {% if item.Prereqs != null %}
+          <div class="attribute">
+           <label> Prereqs :</label>
+           {{ item.Prereqs }}
+         </div>
+          {% endif %}
+        {% if item.Description != null %}
+         <div class="attribute">
+            <label> Description :</label>
+            {{ item.Description }}
+          </div>
+           {% endif %}
+          {% if item.Time!= null %}
+           <div class="attribute">
+            <label> When :</label>
+            {{ item.Time }}
+          </div>
+           {% endif %}
+          {% if item["Phone Number"] != null %}
+           <div class="attribute">
+            <label> Phone Number :</label>
+            {{ item["Phone Number"] }}
+          </div>
+           {% endif %}
+      </div>
+      </div>
+      {% endif %}
+      {%if item.category == 'volunteering'%}
+    <div class="item">
+      <div class="brief">
+        {% if item.category != null %}
+        <div class="attribute">
+          <label> Category :</label>
+         {{ item.category }}
+        </div>
+        {% endif %}
+        {% if item.Time != null %}
+         <div class="attribute">
+          <label> Time :</label>
+          {{ item.Time }}
+        </div>
+         {% endif %}
+        {% if item.Location != null %}
+         <div class="attribute">
+          <label> Location :</label>
+          {{ item.Location }}
+        </div>
+         {% endif %}
+        {% if item.Description != null %}
+         <div class="attribute">
+            <label> Description :</label>
+            {{ item.Description }}
+          </div>
+           {% endif %}
+          {% if item.Requirements != null %}
+           <div class="attribute">
+            <label> Requirements :</label>
+            {{ item.requirements }}
+          </div>
+           {% endif %}
+          {% if item["Phone Number"] != null %}
+           <div class="attribute">
+            <label> Phone Number :</label>
+            {{ item["Phone Number"] }}
+          </div>
+           {% endif %}
+      </div>
+      </div>
+      {% endif %}
+      {%if item.category == 'rideshare'%}
+    <div class="item">
+      <div class="brief">
+        {% if item.category != null %}
+        <div class="attribute">
+          <label> Category :</label>
+         {{ item.category }}
+        </div>
+        {% endif %}
+        {% if item.Time != null %}
+         <div class="attribute">
+          <label> Pick Up Time :</label>
+          {{ item.Time }}
+        </div>
+         {% endif %}
+        {% if item.ocation != null %}
+         <div class="attribute">
+          <label> Pick Up Location :</label>
+          {{ item.Location }}
+        </div>
+         {% endif %}
+        {% if item.Description != null %}
+         <div class="attribute">
+            <label> Description :</label>
+            {{ item.Description }}
+          </div>
+           {% endif %}
+          {% if item["Vehicle Type"] != null %}
+           <div class="attribute">
+            <label> Vehicle :</label>
+            {{ item["Vehicle Type"] }}
+          </div>
+           {% endif %}
+          {% if item["Phone Number"] != null %}
+           <div class="attribute">
+            <label> Phone Number :</label>
+            {{ item["Phone Number"] }}
+          </div>
+           {% endif %}
+      </div>
+      </div>
+      {% endif %}
   {% endfor %}
 </body>
 

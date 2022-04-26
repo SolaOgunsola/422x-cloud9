@@ -23,7 +23,7 @@ def get_forsale_items(category):
     response =table.scan()
     contents = []
     for i in response['Items']:
-        if category == (i['category']):
+        if category == (i['category'].lower()):
             print(i)
             contents.append(i)
     return render_template('user/ListViewForSale.html', title=category,loggedIn=environ.get('LOGIN'), contents=contents)
@@ -36,7 +36,8 @@ def get_community_items(category):
     response =table.scan()
     contents = []
     for i in response['Items']:
-        if category == (i['category']):
+        i['category'] = i['category'].lower()
+        if category == (i['category'].lower()):
             print(i)
             contents.append(i)
     print('title: ' + category, 'loggedIn: ' + environ.get('LOGIN') + '!!!!!!!!!!')
