@@ -63,7 +63,11 @@
 <body>
 
   <div class="title">Listings for {{title}}</div>
-  <div class="addItem"><a href="./AddItem.html">Click Here to add Item </a></div>
+  {% if loggedIn == '1' %}
+  <div class="addItem"><a href="/user/AddCommunity">Click Here to add Item </a></div>
+  {% else %}
+  <div class="addItem"><a href="/">Log in on the main page to post :)</a></div>
+  {% endif %}
   <div class="list">
     {% for item in contents %}
 
