@@ -19,6 +19,7 @@ def user_dashboard():
 @app.route("/guestLogin")
 def guest_login():
     environ.update(LOGIN='0')
+    return render_template("public/index.html", loggedIn=environ.get("LOGIN"))
 
 
 @app.route('/ForSale/<category>', methods=['GET', 'POST'])
