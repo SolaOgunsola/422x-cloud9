@@ -20,6 +20,7 @@
       .title {
         text-align: center;
         font-size: 40px;
+        color: white;
         padding: 50px 0;
       }
       .sectionTitle {
@@ -51,12 +52,12 @@
       <div class="title">Group Cloud9 Final Project </div>
       {%if loggedIn == '0' %}
       <div class="btn btn-block btn-large btn-primary" >
-        <a href="/login">Login</a>
+        <a href="/login"  style="color: white; font-weight: 600;">Login</a>
       </div> 
       {% else %}
       <div>You are logged in as {{name}}</div>
       <div class="btn btn-block btn-large btn-primary" >
-        <a href="/guestLogin">Logout</a>
+        <a href="/guestLogin" style="color: white; font-weight: 600;">Logout</a>
       </div> 
       {% endif %}
       <div class="section">
