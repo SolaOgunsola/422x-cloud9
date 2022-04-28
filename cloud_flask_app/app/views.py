@@ -42,6 +42,6 @@ def register():
             "password": password
         }
         table.put_item(Item=dynamoCanBlowMe)
-        return render_template("user/login.html")
+        return render_template("public/login.html")
 
     return render_template("public/register.html")
