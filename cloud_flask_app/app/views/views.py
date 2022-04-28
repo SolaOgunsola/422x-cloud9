@@ -7,6 +7,10 @@ from os import environ
 S3_SECRET = environ.get('S3_SECRET')
 S3_KEY = environ.get('S3_KEY')
 
+@app.route("/")
+def user_dashboard():
+    return render_template("public/index.html", loggedIn=environ.get("LOGIN"))
+
 # TODO update? since login has mo
 @app.route('/login', methods=['GET', 'POST'])
 def index():

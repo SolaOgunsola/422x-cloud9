@@ -4,5 +4,4 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-from app import views
-from app import user_views
+from app.views import views, user_views, community_handlers, forsale_handlers, housing_handlers, jobs_handlers, service_handlers
