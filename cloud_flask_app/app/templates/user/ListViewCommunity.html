@@ -105,12 +105,14 @@
             {{ item.requirements }}
           </div>
            {% endif %}
-          {% if item["Phone Number"] != null %}
+
+           {% if item.PhoneNumber != null %}
            <div class="attribute">
-            <label> Phone Number :</label>
-            {{ item["Phone Number"] }}
-          </div>
+             <label> Phone Number :</label>
+             {{ item.PhoneNumber }}
+           </div>
            {% endif %}
+   
       </div>
       </div>
       {% endif %}
