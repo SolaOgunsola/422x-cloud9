@@ -16,6 +16,11 @@ contents = None
 def user_dashboard():
     return render_template("public/index.html", loggedIn=environ.get("LOGIN"))
 
+@app.route("/guestLogin")
+def guest_login():
+    environ.update(LOGIN='0')
+
+
 @app.route('/ForSale/<category>', methods=['GET', 'POST'])
 def get_forsale_items(category):
     dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
