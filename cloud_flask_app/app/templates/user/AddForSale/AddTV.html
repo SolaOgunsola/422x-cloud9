@@ -1,0 +1,116 @@
+<html>
+  <head>
+    <title>Add Item</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .title {
+        width: 100%;
+        text-align: center;
+        font-size: 30px;
+        margin: 30px 0;
+        padding: 30px 0;
+        border-bottom: 5px solid black;
+      }
+form{
+margin: 20px 30%;
+}
+.field{
+    display: flex;
+    flex-direction: column;
+}
+input, select{
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+
+}
+input[type="submit"] {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 14px 20px;
+    margin: 40px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    transition: ease 0.3s;
+    background-color: #cef0e9;
+    color: black;
+  }
+
+textarea{
+  width: 100%;
+  height: 100px;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="title">Add a new Item</div>
+
+    <form method="POST">
+      <div class="field">
+        <label>Category:</label>
+        <select name="category">
+          <option value="tv">TVs</option>
+        </select>
+      </div>
+      <div class="field">
+        <label> Make :</label>
+        <input name="make" class="make" type="text" required />
+      </div>
+      <div class="field">
+        <label> Manufacturer :</label>
+        <input name="manu" class="manufacturer" type="text" required />
+      </div>
+      <div class="field">
+        <label> Description :</label>
+        <textarea name="descrip" class="description" required></textarea>
+      </div>
+      <div class="field">
+        <label> Price :</label>
+        <input name="price" type="number" class="price" required />
+      </div>
+      <div class="field">
+        <label> Color :</label>
+        <input name="color" class="color" type="text" required />
+      </div>
+
+      <div class="field">
+        <label> Miles :</label>
+        <input name = "miles" class="miles" type="number" required />
+      </div>
+      <div class="field">
+        <label> Year :</label>
+        <input name="year" class="year" type="number" required />
+      </div>
+      <div class="field">
+        <label> Condition :</label>
+        <select class="condition" name="condition">
+          <option value=”used”>Used</option>
+          <option value=”new”>New </option>
+          </select>
+      </div>
+      <div class="field">
+        <label> Phone Number :</label>
+        <input type="tel" id="phone" name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+      </div>
+      <div class="field">
+        <label> City :</label>
+        <input type="text" class="city" name="city" required />
+      </div>
+
+      <input type="submit" />
+    </form>
+  </body>
+</html>
