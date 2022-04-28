@@ -1,0 +1,386 @@
+<html>
+
+<head>
+  <title>For Sale</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .title {
+      width: 100%;
+      text-align: center;
+      font-size: 30px;
+      margin: 30px 0;
+      padding: 30px 0;
+      border-bottom: 5px solid black;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item {
+      width: 80%;
+      margin: 20px 10%;
+      border: 2px solid black;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .addItem {
+      text-align: center;
+      border: 2px solid black;
+      padding: 15px;
+      margin: 40px 35%;
+      cursor: pointer;
+      color: aliceblue;
+      border-radius: 20px;
+      background-color: grey;
+    }
+
+    label {
+      font-weight: 800;
+    }
+
+    .brief {
+      display: grid;
+      gap: 10px;
+      grid: 20px / auto auto auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <div class="title">Listings for {{title}}</div>
+  {% if loggedIn == '1' %}
+  <div class="addItem"><a href="/user/AddForSale">Click Here to add Item </a></div>
+  {% else %}
+  <div class="addItem"><a href="/">Log in on the main page to post :)</a></div>
+  {% endif %}
+  <div class="list">
+    {% for item in contents %}
+    {% if item.category == 'car'%}
+    <div class="item">
+      <div class="brief">
+        {% if item.Manufacturer != null %}
+        <div class="attribute">
+          <label> Manufacturer :</label>
+          {{ item.Manufacturer }}
+        </div>
+        {% endif %}
+        
+        {% if item.Make != null %}
+        <div class="attribute">
+          <label> Make :</label>
+          {{ item.Make }}
+        </div>
+        {% endif %}
+
+        {% if item.Year != null %}
+        <div class="attribute">
+          <label> Year :</label>
+          {{ item.Year }}
+        </div>
+        {% endif %}
+
+        {% if item.Color != null %}
+        <div class="attribute">
+          <label> Color :</label>
+          {{ item.Color }}
+        </div>
+        {% endif %}
+
+        {% if item.PhoneNumber != null %}
+        <div class="attribute">
+          <label> Phone Number :</label>
+          {{ item.PhoneNumber }}
+        </div>
+        {% endif %}
+
+
+        {% if item.Description != null %}
+        <div class="attribute">
+          <label> Description :</label>
+          {{ item.Description }}
+        </div>
+        {% endif %}
+
+        {% if item.Price != null %}
+        <div class="attribute">
+          <label> Price :</label>
+          {{ item.Price }}
+        </div>
+        {% endif %}
+
+        {% if item.City != null %}
+        <div class="attribute">
+          <label> City :</label>
+          {{ item.City }}
+        </div>
+        {% endif %}
+
+        {% if item.Condition != null %}
+        <div class="attribute">
+          <label> Condition :</label>
+          {{ item.Condition }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  {% if item.category == 'boat'%}
+    <div class="item">
+      <div class="brief">
+        {% if item.Manufacturer != null %}
+        <div class="attribute">
+          <label> Manufacturer :</label>
+          {{ item.Manufacturer }}
+        </div>
+        {% endif %}
+        
+        {% if item.Make != null %}
+        <div class="attribute">
+          <label> Make :</label>
+          {{ item.Make }}
+        </div>
+        {% endif %}
+
+        {% if item.Year != null %}
+        <div class="attribute">
+          <label> Year :</label>
+          {{ item.Year }}
+        </div>
+        {% endif %}
+
+        {% if item.Color != null %}
+        <div class="attribute">
+          <label> Color :</label>
+          {{ item.Color }}
+        </div>
+        {% endif %}
+
+        {% if item.PhoneNumber != null %}
+        <div class="attribute">
+          <label> Phone Number :</label>
+          {{ item.PhoneNumber }}
+        </div>
+        {% endif %}
+
+
+        {% if item.Description != null %}
+        <div class="attribute">
+          <label> Description :</label>
+          {{ item.Description }}
+        </div>
+        {% endif %}
+
+        {% if item.Price != null %}
+        <div class="attribute">
+          <label> Price :</label>
+          {{ item.Price }}
+        </div>
+        {% endif %}
+
+        {% if item.City != null %}
+        <div class="attribute">
+          <label> City :</label>
+          {{ item.City }}
+        </div>
+        {% endif %}
+
+        {% if item.Condition != null %}
+        <div class="attribute">
+          <label> Condition :</label>
+          {{ item.Condition }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  {% if item.category == "art" %}
+  <div class="item">
+    <div class="brief">
+      {% if item.Author != null %}
+      <div class="attribute">
+        <label> Creator :</label>
+        {{ item.Author }}
+      </div>
+      {% endif %}
+      {% if item.Year != null %}
+      <div class="attribute">
+        <label> Year :</label>
+        {{ item.Year }}
+      </div>
+      {% endif %}
+      {% if item.PhoneNumber != null %}
+      <div class="attribute">
+        <label> Phone Number :</label>
+        {{ item.PhoneNumber }}
+      </div>
+      {% endif %}
+      {% if item.Description != null %}
+      <div class="attribute">
+        <label> Description :</label>
+        {{ item.Description }}
+      </div>
+      {% endif %}
+      {% if item.Price != null %}
+      <div class="attribute">
+        <label> Price :</label>
+        {{ item.Price }}
+      </div>
+      {% endif %}
+      {% if item.City != null %}
+      <div class="attribute">
+        <label> City :</label>
+        {{ item.City }}
+      </div>
+      {% endif %}
+      {% if item.Condition != null %}
+      <div class="attribute">
+        <label> Condition :</label>
+        {{ item.Condition }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  {% if item.category == 'tv'%}
+  <div class="item">
+    <div class="brief">
+      {% if item.Manufacturer != null %}
+      <div class="attribute">
+        <label> Manufacturer :</label>
+        {{ item.Manufacturer }}
+      </div>
+      {% endif %}
+      
+      {% if item.size != null %}
+      <div class="attribute">
+        <label> Size :</label>
+        {{ item.size }}
+      </div>
+      {% endif %}
+
+      {% if item.Year != null %}
+      <div class="attribute">
+        <label> Year :</label>
+        {{ item.Year }}
+      </div>
+      {% endif %}
+
+      {% if item.PhoneNumber != null %}
+      <div class="attribute">
+        <label> Phone Number :</label>
+        {{ item.PhoneNumber }}
+      </div>
+      {% endif %}
+
+      {% if item.Description != null %}
+      <div class="attribute">
+        <label> Description :</label>
+        {{ item.Description }}
+      </div>
+      {% endif %}
+
+      {% if item.Price != null %}
+      <div class="attribute">
+        <label> Price :</label>
+        {{ item.Price }}
+      </div>
+      {% endif %}
+
+      {% if item.City != null %}
+      <div class="attribute">
+        <label> City :</label>
+        {{ item.City }}
+      </div>
+      {% endif %}
+
+      {% if item.Condition != null %}
+      <div class="attribute">
+        <label> Condition :</label>
+        {{ item.Condition }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+{% if item.category == 'furniture'%}
+  <div class="item">
+    <div class="brief">
+      {% if item.Manufacturer != null %}
+      <div class="attribute">
+        <label> Manufacturer :</label>
+        {{ item.Manufacturer }}
+      </div>
+      {% endif %}
+      
+      {% if item.size != null %}
+      <div class="attribute">
+        <label> Size :</label>
+        {{ item.size }}
+      </div>
+      {% endif %}
+
+      {% if item.Year != null %}
+      <div class="attribute">
+        <label> Year :</label>
+        {{ item.Year }}
+      </div>
+      {% endif %}
+
+      {% if item.PhoneNumber != null %}
+      <div class="attribute">
+        <label> Phone Number :</label>
+        {{ item.PhoneNumber }}
+      </div>
+      {% endif %}
+
+      {% if item.Description != null %}
+      <div class="attribute">
+        <label> Description :</label>
+        {{ item.Description }}
+      </div>
+      {% endif %}
+
+      {% if item.Price != null %}
+      <div class="attribute">
+        <label> Price :</label>
+        {{ item.Price }}
+      </div>
+      {% endif %}
+
+      {% if item.City != null %}
+      <div class="attribute">
+        <label> City :</label>
+        {{ item.City }}
+      </div>
+      {% endif %}
+
+      {% if item.Condition != null %}
+      <div class="attribute">
+        <label> Condition :</label>
+        {{ item.Condition }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+{% endfor %}
+</div>
+
+</body>
+
+</html>

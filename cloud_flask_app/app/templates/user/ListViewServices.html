@@ -1,0 +1,112 @@
+<html>
+
+<head>
+  <title>For Services</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .title {
+      width: 100%;
+      text-align: center;
+      font-size: 30px;
+      margin: 30px 0;
+      padding: 30px 0;
+      border-bottom: 5px solid black;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item {
+      width: 80%;
+      margin: 20px 10%;
+      border: 2px solid black;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+    .addItem {
+      text-align: center;
+      border: 2px solid black;
+      padding: 15px;
+      margin: 40px 35%;
+      cursor: pointer;
+      color: aliceblue;
+      border-radius: 20px;
+      background-color: grey;
+    }
+    label {
+      font-weight: 800;
+    }
+    .brief {
+      display: grid;
+      gap: 10px;
+      grid: 20px / auto auto auto;
+    }
+
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="title">Listings for {{title}}</div>
+  {% if loggedIn == '1' %}
+  <div class="addItem"><a href="/user/AddService">Click Here to add Item </a></div>
+  {% else %}
+  <div class="addItem"><a href="/">Log in on the main page to post :)</a></div>
+  {% endif %}
+  <div class="list">
+    {% for item in contents %}
+    <div class="item">
+      <div class="brief">
+        {% if item.category != null %}
+        <div class="attribute">
+          <label> Category :</label>
+         {{ item.category }}
+        </div>
+           {% endif %}
+         {% if item.availability != null %}
+         <div class="attribute">
+          <label> Availability :</label>
+          {{ item.availability }}
+        </div>
+           {% endif %}
+         {% if item.location != null %}
+         <div class="attribute">
+          <label> Location :</label>
+          {{ item.location }}
+        </div>
+           {% endif %}
+         {% if item.description != null %}
+         <div class="attribute">
+            <label> Description :</label>
+            {{ item.description }}
+          </div>
+             {% endif %}
+         {% if item.price != null %}
+         <div class="attribute">
+            <label> Price :</label>
+            {{ item.price }}
+          </div>
+             {% endif %}
+         {% if item.PhoneNumber != null %}
+         <div class="attribute">
+            <label> Phone Number :</label>
+            {{ item.PhoneNumber }}
+          </div>
+          {% endif %}
+      </div>
+      </div>
+  {% endfor %}
+</body>
+
+</html>

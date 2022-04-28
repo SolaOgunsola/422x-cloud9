@@ -3,29 +3,22 @@
   <title>
     COMS-422  Project Phase 3
   </title>
-  <script>
- function handleClick1(){
-   document.getElementById("login").style.visibility = "hidden";
-   document.getElementById("register").style.visibility = "visible";
- }
-  </script>
-
 </head>
 <body>
   <!-- Accessing script from ../static/js/app.js -->
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-  <div class="register" id="register">
-    <h1>Register</h1>
+  <div class="login" id="login">
+    <h1>Login</h1>
     <form method="post">
       <input type="text" name="username" placeholder="Username" required="required" autocomplete="off"/>
-      <input type="text" name="firstName" placeholder="First Name" required="required" autocomplete="off"/>
-      <input type="text" name="lastName" placeholder="Last Name" required="required" autocomplete="off"/>
       <input type="password" name="password" placeholder="Password" required="required"/>
-      <div class="loginBtn">
-        <a href="/login">... already have an account</a>
+      <div class="registerBtn">
+        <a href="/register">... create a new account</a>
       </div>
-
-      <button type="submit" class="btn btn-primary btn-block btn-large">Sign me up.</button>
+      <div class="registerBtn">
+        <a href="/guestLogin">... Login as Guest</a>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
     </form>
   </div>
 </body>
@@ -50,25 +43,21 @@ html { width: 100%; height:100%; overflow:hidden; }
 
 .registerBtn, .loginBtn {
   display: flex;
-  align-items:flex-end;
+  align-items:flex-start;
   margin-bottom: 10px;
   margin-top: -10px;
   font-size: 12px;
   color: grey;
 }
-a{
+a, a:visited{
   cursor:pointer;
   width: 100%;
   padding-left: 50%;
-  text-decoration: none; 
   color: white;
-
+  text-decoration: none;
 }
-a:hover{
-  color: white;
-}
-a:visited { 
-    text-decoration: none; 
+.register{
+  visibility: hidden;
 }
 body { 
   width: 100%;

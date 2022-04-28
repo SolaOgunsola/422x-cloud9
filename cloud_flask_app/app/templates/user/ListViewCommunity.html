@@ -1,0 +1,284 @@
+<html>
+
+<head>
+  <title>For Community</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .title {
+      width: 100%;
+      text-align: center;
+      font-size: 30px;
+      margin: 30px 0;
+      padding: 30px 0;
+      border-bottom: 5px solid black;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item {
+      width: 80%;
+      margin: 20px 10%;
+      border: 2px solid black;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+    .addItem {
+      text-align: center;
+      border: 2px solid black;
+      padding: 15px;
+      margin: 40px 35%;
+      cursor: pointer;
+      color: aliceblue;
+      border-radius: 20px;
+      background-color: grey;
+    }
+    label {
+      font-weight: 800;
+    }
+    .brief {
+      display: grid;
+      gap: 10px;
+      grid: 20px / auto auto auto;
+    }
+
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="title">Listings for {{title}}</div>
+  {% if loggedIn == '1' %}
+    <div class="addItem"><a href="/user/AddCommunity">Click Here to add Item </a></div>
+  {% else %}
+    <div class="addItem"><a href="/">Log in on the main page to post :)</a></div>
+  {% endif %}
+  <div class="list">
+    {% for item in contents %}
+    {%if item.category == 'events'%}
+    <div class="item">
+      <div class="brief">
+        {% if item.category != null %}
+        <div class="attribute">
+          <label> Category :</label>
+         {{ item.category }}
+        </div>
+        {% endif %}
+        {% if item.Time != null %}
+         <div class="attribute">
+          <label> Time :</label>
+          {{ item.Time }}
+        </div>
+         {% endif %}
+        {% if item.Location != null %}
+         <div class="attribute">
+          <label> Location :</label>
+          {{ item.Location }}
+        </div>
+         {% endif %}
+         {% if item.Type != null %}
+         <div class="attribute">
+          <label> Type of Event :</label>
+          {{ item.Type }}
+        </div>
+         {% endif %}
+        {% if item.Description != null %}
+         <div class="attribute">
+            <label> Description :</label>
+            {{ item.Description }}
+          </div>
+           {% endif %}
+          {% if item.Requirements != null %}
+           <div class="attribute">
+            <label> Requirements :</label>
+            {{ item.requirements }}
+          </div>
+           {% endif %}
+
+           {% if item.PhoneNumber != null %}
+           <div class="attribute">
+             <label> Phone Number :</label>
+             {{ item.PhoneNumber }}
+           </div>
+           {% endif %}
+   
+      </div>
+      </div>
+      {% endif %}
+      {%if item.category == 'lost and found'%}
+    <div class="item">
+      <div class="brief">
+        {% if item.category != null %}
+        <div class="attribute">
+          <label> Category :</label>
+         {{ item.category }}
+        </div>
+        {% endif %}
+        {% if item.Location != null %}
+         <div class="attribute">
+          <label> Pick Up Location :</label>
+          {{ item.Location }}
+        </div>
+         {% endif %}
+        {% if item.Description != null %}
+         <div class="attribute">
+            <label> Description :</label>
+            {{ item.Description }}
+          </div>
+           {% endif %}
+          {% if item.Time != null %}
+           <div class="attribute">
+            <label> Pick Up Availability :</label>
+            {{ item.Time }}
+          </div>
+           {% endif %}
+          {% if item["Phone Number"] != null %}
+           <div class="attribute">
+            <label> Phone Number :</label>
+            {{ item["Phone Number"] }}
+          </div>
+           {% endif %}
+      </div>
+      </div>
+      {% endif %}
+      {%if item.category == 'classes'%}
+    <div class="item">
+      <div class="brief">
+        {% if item.category != null %}
+        <div class="attribute">
+          <label> Category :</label>
+         {{ item.category }}
+        </div>
+        {% endif %}
+        {% if item.Location != null %}
+         <div class="attribute">
+          <label> Pick Up Location :</label>
+          {{ item.Location }}
+        </div>
+         {% endif %}
+         {% if item.Prereqs != null %}
+          <div class="attribute">
+           <label> Prereqs :</label>
+           {{ item.Prereqs }}
+         </div>
+          {% endif %}
+        {% if item.Description != null %}
+         <div class="attribute">
+            <label> Description :</label>
+            {{ item.Description }}
+          </div>
+           {% endif %}
+          {% if item.Time!= null %}
+           <div class="attribute">
+            <label> When :</label>
+            {{ item.Time }}
+          </div>
+           {% endif %}
+          {% if item["Phone Number"] != null %}
+           <div class="attribute">
+            <label> Phone Number :</label>
+            {{ item["Phone Number"] }}
+          </div>
+           {% endif %}
+      </div>
+      </div>
+      {% endif %}
+      {%if item.category == 'volunteering'%}
+    <div class="item">
+      <div class="brief">
+        {% if item.category != null %}
+        <div class="attribute">
+          <label> Category :</label>
+         {{ item.category }}
+        </div>
+        {% endif %}
+        {% if item.Time != null %}
+         <div class="attribute">
+          <label> Time :</label>
+          {{ item.Time }}
+        </div>
+         {% endif %}
+        {% if item.Location != null %}
+         <div class="attribute">
+          <label> Location :</label>
+          {{ item.Location }}
+        </div>
+         {% endif %}
+        {% if item.Description != null %}
+         <div class="attribute">
+            <label> Description :</label>
+            {{ item.Description }}
+          </div>
+           {% endif %}
+          {% if item.Requirements != null %}
+           <div class="attribute">
+            <label> Requirements :</label>
+            {{ item.requirements }}
+          </div>
+           {% endif %}
+          {% if item["Phone Number"] != null %}
+           <div class="attribute">
+            <label> Phone Number :</label>
+            {{ item["Phone Number"] }}
+          </div>
+           {% endif %}
+      </div>
+      </div>
+      {% endif %}
+      {%if item.category == 'rideshare'%}
+    <div class="item">
+      <div class="brief">
+        {% if item.category != null %}
+        <div class="attribute">
+          <label> Category :</label>
+         {{ item.category }}
+        </div>
+        {% endif %}
+        {% if item.Time != null %}
+         <div class="attribute">
+          <label> Pick Up Time :</label>
+          {{ item.Time }}
+        </div>
+         {% endif %}
+        {% if item.ocation != null %}
+         <div class="attribute">
+          <label> Pick Up Location :</label>
+          {{ item.Location }}
+        </div>
+         {% endif %}
+        {% if item.Description != null %}
+         <div class="attribute">
+            <label> Description :</label>
+            {{ item.Description }}
+          </div>
+           {% endif %}
+          {% if item["Vehicle Type"] != null %}
+           <div class="attribute">
+            <label> Vehicle :</label>
+            {{ item["Vehicle Type"] }}
+          </div>
+           {% endif %}
+          {% if item["Phone Number"] != null %}
+           <div class="attribute">
+            <label> Phone Number :</label>
+            {{ item["Phone Number"] }}
+          </div>
+           {% endif %}
+      </div>
+      </div>
+      {% endif %}
+  {% endfor %}
+</body>
+
+</html>
