@@ -68,6 +68,12 @@
     {% for item in contents %}
     <div class="item">
       <div class="brief">
+        {% if item.title != null %}
+        <div class="attribute">
+          <label> Title :</label>
+         {{ item.title }}
+        </div>
+        {% endif %}
         {% if item.category != null %}
         <div class="attribute">
           <label> Category :</label>
