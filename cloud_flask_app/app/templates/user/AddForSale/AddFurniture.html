@@ -65,17 +65,14 @@ textarea{
           <option value="furniture">Furniture</option>
         </select>
       </div>
-      <div class="field">
-        <label> Make :</label>
-        <input name="make" class="make" type="text" required />
-      </div>
+    
       <div class="field">
         <label> Manufacturer :</label>
-        <input name="manu" class="manufacturer" type="text" required />
+        <input name="manufacturer" class="manufacturer" type="text" required />
       </div>
       <div class="field">
         <label> Description :</label>
-        <textarea name="descrip" class="description" required></textarea>
+        <textarea name="description" class="description" required></textarea>
       </div>
       <div class="field">
         <label> Price :</label>
@@ -87,13 +84,11 @@ textarea{
       </div>
 
       <div class="field">
-        <label> Miles :</label>
-        <input name = "miles" class="miles" type="number" required />
+        <label> Dimensions :</label>
+        <input name="dimensions" class="dimensions" type="text" required />
       </div>
-      <div class="field">
-        <label> Year :</label>
-        <input name="year" class="year" type="number" required />
-      </div>
+
+    
       <div class="field">
         <label> Condition :</label>
         <select class="condition" name="condition">
@@ -102,13 +97,14 @@ textarea{
           </select>
       </div>
       <div class="field">
+        <label> Location:</label>
+        <input type="text" class="location" name="location" required />
+      </div>
+      <div class="field">
         <label> Phone Number :</label>
         <input type="tel" id="phone" name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
       </div>
-      <div class="field">
-        <label> City :</label>
-        <input type="text" class="city" name="city" required />
-      </div>
+
 
       <input type="submit" />
     </form>
