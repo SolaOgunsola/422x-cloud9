@@ -14,7 +14,7 @@ contents = None
 
 @app.route("/")
 def user_dashboard():
-    return render_template("public/index.html")
+    return render_template("public/index.html", loggedIn=environ.get("LOGIN"))
 
 @app.route('/ForSale/<category>', methods=['GET', 'POST'])
 def get_forsale_items(category):
