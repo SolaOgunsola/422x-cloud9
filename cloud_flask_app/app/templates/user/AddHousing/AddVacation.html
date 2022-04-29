@@ -7,12 +7,7 @@
     <div class="title">Add a new Item</div>
     <!-- address, description, nightly fee, beds, pets?, phone -->
     <form method="POST">
-      <div class="field">
-        <label>Category:</label>
-        <select name="category">
-          <option value="vacation">Vacation</option>
-        </select>
-      </div>
+      <input name="category" type="hidden" value="vacation" readonly required/>
       <div class="field">
         <label>Address:</label>
         <input name="address" type="text" required />

@@ -5,15 +5,9 @@
   </head>
   <body>
     <div class="title">Add a new Item</div>
-
+    <input name="category" type="hidden" value="art" readonly required/>
     <!-- Title, Artist, Year, Medium, Price, email -->
     <form method="POST">
-      <div class="field">
-        <label>Category:</label>
-        <select name="category">
-         <option value="art">Art</option> 
-        </select>
-      </div>
       <div class="field">
         <label>Title:</label>
         <input name="title" class="make" type="text" required />

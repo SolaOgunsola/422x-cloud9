@@ -6,13 +6,7 @@
   <body>
     <div class="title">Add a new Item</div>
     <!-- Title, School, Subject(s), Description, Salary, email -->
-    <form method="POST">
-      <div class="field">
-        <label>Category:</label>
-        <select name="category">
-          <option value="education">Education</option>
-        </select>
-      </div>
+    <input name="category" type="hidden" value="education" readonly required/>
       <div class="field">
         <label>Title:</label>
         <input name="title" type="text" required />
