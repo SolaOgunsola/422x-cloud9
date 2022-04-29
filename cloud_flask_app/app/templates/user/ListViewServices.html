@@ -92,6 +92,24 @@
             {{ item.description }}
           </div>
              {% endif %}
+          {% if item.type != null %}
+          <div class="attribute">
+            <label> Type of Service :</label>
+            {{ item.type }}
+          </div>
+          {% endif %}
+          {% if item.petType != null %}
+          <div class="attribute">
+            <label> Type of Pet :</label>
+            {{ item.petTyle }}
+          </div>
+          {% endif %}
+          {% if item.subjects != null %}
+          <div class="attribute">
+            <label> Subjects :</label>
+            {{ item.subjects }}
+          </div>
+          {% endif %}
          {% if item.price != null %}
          <div class="attribute">
             <label> Price :</label>
