@@ -62,10 +62,6 @@ textarea{
       <div class="field">
         <label>Category:</label>
         <select name="category">
-          <option value="automotive">Automotive</option>
-          <option value="computer">Computer</option>
-          <option value="legal">Legal</option>
-          <option value="lessons">Lessons</option>
           <option value="pet">Pet</option>
         </select>
       </div>
@@ -74,12 +70,16 @@ textarea{
         <input name="availability" class="make" type="text" required />
       </div>
       <div class="field">
+        <label> Type of Pet :</label>
+        <input type="text" name="petType" placeholder="dog , cat ...?"  required>
+      </div>
+      <div class="field">
         <label> Location :</label>
-        <input name="manu" class="location" type="text" required />
+        <input name="location" class="location" type="text" required />
       </div>
       <div class="field">
         <label> Service Description :</label>
-        <textarea name="descrip" class="description" required></textarea>
+        <textarea name="description class="description" required></textarea>
       </div>
       <div class="field">
         <label> Price Per Hour :</label>
@@ -89,6 +89,7 @@ textarea{
         <label> Phone Number :</label>
         <input type="tel" id="phone" name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
       </div>
+      
       <input type="submit" />
     </form>
   </body>
