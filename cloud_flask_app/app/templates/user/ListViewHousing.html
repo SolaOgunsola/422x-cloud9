@@ -92,12 +92,75 @@
             {{ item.size }}
           </div>
           {% endif %}
+          {% if item.budget != null %}
+          <div class="attribute">
+              <label> Budget Range :</label>
+              {{ item.budget }}
+            </div>
+            {% endif %}
+          {% if item.beds != null %}
+          <div class="attribute">
+              <label> No of beds :</label>
+              {{ item.beds }}
+            </div>
+            {% endif %}
+            {% if item.startDate != null %}
+            <div class="attribute">
+                <label> Start Date :</label>
+                {{ item.startDate }}
+              </div>
+              {% endif %}
+              {% if item.endDate != null %}
+              <div class="attribute">
+                  <label> End Date :</label>
+                  {{ item.endDate }}
+                </div>
+                {% endif %}
+                {% if item.roommates != null %}
+                <div class="attribute">
+                    <label> Roommates:</label>
+                    {{ item.roommates }}
+                  </div>
+                  {% endif %}
+                  {% if item.housingType != null %}
+                  <div class="attribute">
+                      <label> Housing Type :</label>
+                      {{ item.housingType }}
+                    </div>
+                    {% endif %}
+      
+            {% if item.pets != null %}
+            <div class="attribute">
+                <label> Pets :</label>
+                {{ item.pets }}
+              </div>
+              {% endif %}
+
+              {% if item.fee != null %}
+              <div class="attribute">
+                  <label> Nightly Fee ($) :</label>
+                  {{ item.fee }}
+                </div>
+                {% endif %}
+
+            {% if item.baths != null %}
+            <div class="attribute">
+                <label> No of baths :</label>
+                {{ item.baths }}
+              </div>
+              {% endif %}
        {% if item.rent != null %}
         <div class="attribute">
             <label> Rent :</label>
             {{ item.rent }}
           </div>
           {% endif %}
+          {% if item.email != null %}
+          <div class="attribute">
+              <label> Email :</label>
+              {{ item.email }}
+            </div>
+            {% endif %}
          {% if item.PhoneNumber != null %}
           <div class="attribute">
             <label> Phone Number :</label>
