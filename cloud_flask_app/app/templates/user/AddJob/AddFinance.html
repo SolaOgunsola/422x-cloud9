@@ -5,39 +5,36 @@
   </head>
   <body>
     <div class="title">Add a new Item</div>
-    <!-- Title, Remote y/n, Salary, Company, email -->
+    <!-- Title, Remote y/n, Salary, Company, phone -->
     <form method="POST">
+      <input name="category" type="hidden" value="Finance" readonly required/>
       <div class="field">
-        <label>Category:</label>
-        <select name="category">
-          <option value="finance">Finance</option>
+        <label>Title:</label>
+        <input name="title" type="text" required />
+      </div>
+      <div class="field">
+        <label>Remote Position:</label>
+        <select name="remote">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
         </select>
       </div>
       <div class="field">
-        <label> Title :</label>
-        <input name="title" class="make" type="text" required />
+        <label>Salary:</label>
+        <input name="salary" type="number" required />
       </div>
       <div class="field">
-        <label> Experience :</label>
-        <input name="experience" class="manufacturer" type="text" required />
+        <label>Company:</label>
+        <textarea name="company" type="text" required></textarea>
       </div>
       <div class="field">
-        <label> Salary :</label>
-        <input name="salary" type="number" class="salary" required />
-      </div>
-      <div class="field">
-        <label> Location :</label>
-        <textarea name="location" class="location" type="text" required></textarea>
-      </div>
-      <div class="field">
-        <label> Description :</label>
+        <label>Description:</label>
         <textarea name="description" class="description" required></textarea>
       </div>
       <div class="field">
-        <label> Phone Number :</label>
-        <input type="tel" id="phone" name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <label>Phone Number:</label>
+        <input type="tel" name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
       </div>
-
       <input type="submit" />
     </form>
   </body>

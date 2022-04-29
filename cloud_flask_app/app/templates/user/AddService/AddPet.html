@@ -7,35 +7,30 @@
     <div class="title">Add a new Item</div>
 
     <form method="POST">
+      <input name="category" type="hidden" value="Pet Service" readonly required/>
       <div class="field">
-        <label>Category:</label>
-        <select name="category">
-          <option value="pet">Pet</option>
-        </select>
+        <label>Availability:</label>
+        <input name="availability" type="text" required />
       </div>
       <div class="field">
-        <label> Availability :</label>
-        <input name="availability" class="make" type="text" required />
-      </div>
-      <div class="field">
-        <label> Type of Pet :</label>
+        <label>Type of Pet:</label>
         <input type="text" name="petType" placeholder="dog , cat ...?"  required>
       </div>
       <div class="field">
-        <label> Location :</label>
-        <input name="location" class="location" type="text" required />
+        <label>Location:</label>
+        <input name="location" type="text" required />
       </div>
       <div class="field">
         <label> Service Description :</label>
-        <textarea name="description class="description" required></textarea>
+        <textarea name="description" required></textarea>
       </div>
       <div class="field">
-        <label> Price Per Hour :</label>
-        <input name="price" type="number" class="price" required />
+        <label>Price Per Hour:</label>
+        <input name="price" type="number" required />
       </div>
       <div class="field">
-        <label> Phone Number :</label>
-        <input type="tel" id="phone" name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <label>Phone Number:</label>
+        <input type="tel" name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
       </div>
       
       <input type="submit" />
