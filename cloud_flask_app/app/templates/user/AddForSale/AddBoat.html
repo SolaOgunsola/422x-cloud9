@@ -8,12 +8,7 @@
 
     <!-- Manufacturer, Type, Year, Condition, Description, Price, Email -->
     <form method="POST">
-      <div class="field">
-        <label>Category:</label>
-        <select name="category">
-          <option value="boat">Boats</option>
-        </select>
-      </div>
+      <input name="category" type="hidden" value="boats" readonly required/>
       <div class="field">
         <label>Manufacturer:</label>
         <input name="manufacturer" type="text" required />

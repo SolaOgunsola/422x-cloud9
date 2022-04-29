@@ -6,13 +6,7 @@
   <body>
     <div class="title">Add a new Item</div>
     <!-- Rent, Startdate, end date, roommates y/n, parking y/n, email -->
-    <form method="POST">
-      <div class="field">
-        <label>Category:</label>
-        <select name="category">
-          <option value="sublets">Sublets</option>
-        </select>
-      </div>
+      <input name="category" type="hidden" value="sublets" readonly required/>
       <div class="field">
         <label>Rent Per Month ($):</label>
         <input name="rent" type="numeric" required>
