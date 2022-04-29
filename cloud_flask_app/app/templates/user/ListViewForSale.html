@@ -87,6 +87,27 @@
         </div>
         {% endif %}
 
+                
+        {% if item.artist != null %}
+        <div class="attribute">
+          <label> Artist :</label>
+          {{ item.artist }}
+        </div>
+        {% endif %}
+
+        {% if item.type != null %}
+        <div class="attribute">
+          <label> Type :</label>
+          {{ item.type }}
+        </div>
+        {% endif %}
+        {% if item.pickupDropoff != null %}
+        <div class="attribute">
+          <label> Pickup or Dropoff :</label>
+          {{ item.pickupDropoff }}
+        </div>
+        {% endif %}
+        
         {% if item.Year != null %}
         <div class="attribute">
           <label> Year :</label>
