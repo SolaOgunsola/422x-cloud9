@@ -30,6 +30,7 @@
       padding: 20px;
       text-align: center;
     }
+
     .addItem {
       text-align: center;
       border: 2px solid black;
@@ -40,9 +41,11 @@
       border-radius: 20px;
       background-color: grey;
     }
+
     label {
       font-weight: 800;
     }
+
     .brief {
       display: grid;
       gap: 10px;
@@ -60,10 +63,10 @@
 <body>
   <div class="title">Listings for {{title}}</div>
   {% if loggedIn == '1' %}
-    <div class="addItem"><a href="/user/AddHousing">Click Here to add Item </a></div>
+  <div class="addItem"><a href="/user/AddHousing">Click Here to add Item </a></div>
   {% else %}
-    <div class="addItem"><a href="/">Log in on the main page to post :)</a></div>
-  {% endif %}  
+  <div class="addItem"><a href="/">Log in on the main page to post :)</a></div>
+  {% endif %}
   <div class="list">
     {% for item in contents %}
     <div class="item">
@@ -71,43 +74,129 @@
         {% if item.category != null %}
         <div class="attribute">
           <label> Category :</label>
-         {{ item.category }}
+          {{ item.category }}
         </div>
         {% endif %}
-       {% if item.description != null %}
+        {% if item.description != null %}
         <div class="attribute">
-            <label> Description :</label>
-            {{ item.description }}
-          </div>
-          {% endif %}
-       {% if item.location != null %}
+          <label> Description :</label>
+          {{ item.description }}
+        </div>
+        {% endif %}
+        {% if item.location != null %}
         <div class="attribute">
           <label> Location :</label>
           {{ item.location }}
         </div>
         {% endif %}
-       {% if item.size != null %}
+        {% if item.lease != null %}
         <div class="attribute">
-            <label> Size :</label>
-            {{ item.size }}
-          </div>
-          {% endif %}
-       {% if item.rent != null %}
+          <label> Lease :</label>
+          {{ item.lease }}
+        </div>
+        {% endif %}
+        {% if item.size != null %}
         <div class="attribute">
-            <label> Rent :</label>
-            {{ item.rent }}
-          </div>
-          {% endif %}
-         {% if item.PhoneNumber != null %}
-          <div class="attribute">
-            <label> Phone Number :</label>
-            {{ item.PhoneNumber }}
-          </div>
-          {% endif %}
-          
+          <label> Size (sqft) :</label>
+          {{ item.size }}
+        </div>
+
+        {% endif %}
+        {% if item.furnished != null %}
+        <div class="attribute">
+          <label> Furnished :</label>
+          {{ item.furnished }}
+        </div>
+
+        {% endif %}
+        
+        {% if item.budget != null %}
+        <div class="attribute">
+          <label> Budget Range :</label>
+          {{ item.budget }}
+        </div>
+        {% endif %}
+        {% if item.beds != null %}
+        <div class="attribute">
+          <label> No of beds :</label>
+          {{ item.beds }}
+        </div>
+        {% endif %}
+        {% if item.baths != null %}
+        <div class="attribute">
+          <label> No of baths :</label>
+          {{ item.baths }}
+        </div>
+        {% endif %}
+
+        {% if item.parking != null %}
+        <div class="attribute">
+          <label> Parking :</label>
+          {{ item.parking }}
+        </div>
+        {% endif %}
+        {% if item.startDate != null %}
+        <div class="attribute">
+          <label> Start Date :</label>
+          {{ item.startDate }}
+        </div>
+        {% endif %}
+        {% if item.endDate != null %}
+        <div class="attribute">
+          <label> End Date :</label>
+          {{ item.endDate }}
+        </div>
+        {% endif %}
+        {% if item.roommates != null %}
+        <div class="attribute">
+          <label> Roommates:</label>
+          {{ item.roommates }}
+        </div>
+        {% endif %}
+        {% if item.housingType != null %}
+        <div class="attribute">
+          <label> Housing Type :</label>
+          {{ item.housingType }}
+        </div>
+        {% endif %}
+
+        {% if item.pets != null %}
+        <div class="attribute">
+          <label> Pets :</label>
+          {{ item.pets }}
+        </div>
+        {% endif %}
+
+        {% if item.fee != null %}
+        <div class="attribute">
+          <label> Nightly Fee ($) :</label>
+          {{ item.fee }}
+        </div>
+        {% endif %}
+
+  
+        {% if item.rent != null %}
+        <div class="attribute">
+          <label> Rent :</label>
+          {{ item.rent }}
+        </div>
+        {% endif %}
+        {% if item.email != null %}
+        <div class="attribute">
+          <label> Email :</label>
+          {{ item.email }}
+        </div>
+        {% endif %}
+        {% if item.PhoneNumber != null %}
+        <div class="attribute">
+          <label> Phone Number :</label>
+          {{ item.PhoneNumber }}
+        </div>
+        {% endif %}
+
       </div>
-      </div>
-  {% endfor %}
+    </div>
+    {% endfor %}
 </body>
 
 </html>

@@ -250,7 +250,7 @@
           {{ item.Time }}
         </div>
          {% endif %}
-        {% if item.ocation != null %}
+        {% if item.location != null %}
          <div class="attribute">
           <label> Pick Up Location :</label>
           {{ item.Location }}
@@ -262,6 +262,57 @@
             {{ item.Description }}
           </div>
            {% endif %}
+
+           {% if item.eventName != null %}
+           <div class="attribute">
+              <label> Event Name :</label>
+              {{ item.eventName }}
+            </div>
+             {% endif %}
+
+           {% if item.startDate != null %}
+           <div class="attribute">
+             <label> Start Date :</label>
+             {{ item.startDate }}
+           </div>
+           {% endif %}
+           {% if item.startTime != null %}
+           <div class="attribute">
+             <label> Start Time :</label>
+             {{ item.startTime }}
+           </div>
+           {% endif %}
+           {% if item.endTime != null %}
+           <div class="attribute">
+             <label> End Time :</label>
+             {{ item.endTime }}
+           </div>
+           {% endif %}
+           {% if item.endDate != null %}
+           <div class="attribute">
+             <label> End Date :</label>
+             {{ item.endDate }}
+           </div>
+           {% endif %}
+           {% if item.item != null %}
+           <div class="attribute">
+             <label> Item :</label>
+             {{ item.Iitem }}
+           </div>
+           {% endif %}
+           {% if item.qualifications != null %}
+           <div class="attribute">
+             <label> Qualifications :</label>
+             {{ item.qualifications }}
+           </div>
+           {% endif %}
+           {% if item.fee != null %}
+           <div class="attribute">
+             <label> Hourly Fee:</label>
+             {{ item.fee }}
+           </div>
+           {% endif %}
+           
           {% if item["Vehicle Type"] != null %}
            <div class="attribute">
             <label> Vehicle :</label>
