@@ -14,24 +14,35 @@
         </select>
       </div>
       <div class="field">
-        <label> Location :</label>
-        <input name="location" class="make" type="text"  required />
+        <label>Address:</label>
+        <input name="address" type="text"  required />
       </div>
       <div class="field">
-        <label> Square Footage :</label>
-        <input name="size" class="manufacturer" type="numeric" required />
+        <label>Monthly Rent ($):</label>
+        <input name="rent" type="numeric" required>
       </div>
       <div class="field">
-        <label> Rent Per Month:</label>
-        <input name="rent" class="description" type="numeric" required>
+        <label># of Beds:</label>
+        <input name="beds" type="numeric" required>
+      </div>
+      <div class="field">
+        <label># of Baths:</label>
+        <input name="baths" type="numeric" required>
       </div>
       <div class="field">
         <label> Description :</label>
         <textarea name="description"  class="price" required></textarea>
       </div>
       <div class="field">
-        <label> Phone Number :</label>
-        <input type="tel" id="phone" name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <label>Furnished:</label>
+        <select name="furnished">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Phone Number:</label>
+        <input name="phone" type="tel" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
       </div>
       <input type="submit" />
     </form>

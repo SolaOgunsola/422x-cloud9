@@ -8,50 +8,34 @@
 
     <!-- Type, Price, Condition, Size, email -->
     <form method="POST">
+      <input name="category" type="hidden" value="tv" readonly required/>
       <div class="field">
-        <label>Category:</label>
-        <select name="category">
-          <option value="tv">TVs</option>
+        <label>Type:</label>
+        <select name="type">
+          <option value="CRT">CRT</option>
+          <option value="Flatscreen">Flatscreen</option>
+          <option value="Smart Tv">Smart TV</option>
         </select>
       </div>
       <div class="field">
-        <label> Manufacturer :</label>
-        <input name="manufacturer" class="manufacturer" type="text" required />
+        <label>Price:</label>
+        <input name="price" type="number" required />
       </div>
       <div class="field">
-        <label> Size :</label>
-        <input name="size" class="size" type="text" required />
-      </div>
-      <div class="field">
-        <label> Description :</label>
-        <textarea name="description" class="description" required></textarea>
-      </div>
-      <div class="field">
-        <label> Price :</label>
-        <input name="price" type="number" class="price" required />
-      </div>
-
-      <div class="field">
-        <label> Year :</label>
-        <input name="year" class="year" type="number" required />
-      </div>
-      <div class="field">
-        <label> Condition :</label>
-        <select class="condition" name="condition">
+        <label>Condition:</label>
+        <select name="condition">
           <option value=”used”>Used</option>
           <option value=”new”>New </option>
           </select>
       </div>
       <div class="field">
-        <label> Location:</label>
-        <input type="text" class="location" name="location" required />
+        <label>Size:</label>
+        <input name="size" type="text" required />
       </div>
       <div class="field">
-        <label> Phone Number :</label>
-        <input type="tel" id="phone" name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <label>Email:</label>
+        <input name="email" type="text" placeholder="example@domain.com" required>
       </div>
-
-
       <input type="submit" />
     </form>
   </body>

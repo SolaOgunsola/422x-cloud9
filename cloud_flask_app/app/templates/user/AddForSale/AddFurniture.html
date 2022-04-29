@@ -7,54 +7,38 @@
     <div class="title">Add a new Item</div>
 
     <form method="POST">
+      <input name="category" type="hidden" value="furniture" readonly required/>
+      <!-- Type, Condition, Description, Price, Pickup/Dropoff, email -->
       <div class="field">
-        <label>Category:</label>
-        <select name="category">
-          <option value="furniture">Furniture</option>
-        </select>
-      </div>
-    
-      <!-- Type, Condition, Price, Pickup/Dropoff, email -->
-      <div class="field">
-        <label> Manufacturer :</label>
-        <input name="manufacturer" class="manufacturer" type="text" required />
+        <label>Type:</label>
+        <input name="type" type="text" required />
       </div>
       <div class="field">
-        <label> Description :</label>
-        <textarea name="description" class="description" required></textarea>
-      </div>
-      <div class="field">
-        <label> Price :</label>
-        <input name="price" type="number" class="price" required />
-      </div>
-      <div class="field">
-        <label> Color :</label>
-        <input name="color" class="color" type="text" required />
-      </div>
-
-      <div class="field">
-        <label> Dimensions :</label>
-        <input name="dimensions" class="dimensions" type="text" required />
-      </div>
-
-    
-      <div class="field">
-        <label> Condition :</label>
-        <select class="condition" name="condition">
+        <label>Condition:</label>
+        <select name="condition">
           <option value=”used”>Used</option>
           <option value=”new”>New </option>
           </select>
       </div>
       <div class="field">
-        <label> Location:</label>
-        <input type="text" class="location" name="location" required />
+        <label>Description:</label>
+        <textarea name="description" required></textarea>
       </div>
       <div class="field">
-        <label> Phone Number :</label>
-        <input type="tel" id="phone" name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <label>Price:</label>
+        <input name="price" type="number" required />
       </div>
-
-
+      <div class="field">
+        <label>Pickup/Dropoff:</label>
+        <select name="pickupDropoff">
+          <option value="pickup">Pickup</option>
+          <option value="dropoff">Dropoff</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Email:</label>
+        <input name="email" type="text" placeholder="example@domain.com" required>
+      </div>
       <input type="submit" />
     </form>
   </body>
