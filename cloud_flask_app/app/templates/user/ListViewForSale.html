@@ -16,20 +16,20 @@
   {% endif %}
   <div class="list">
     {% for item in contents %}
-    {% if item.category == 'car'%}
     <div class="item">
       <div class="brief">
-        {% if item.Manufacturer != null %}
+
+        {% if item.manufacturer != null %}
         <div class="attribute">
           <label> Manufacturer :</label>
-          {{ item.Manufacturer }}
+          {{ item.manufacturer }}
         </div>
         {% endif %}
         
-        {% if item.Make != null %}
+        {% if item.make != null %}
         <div class="attribute">
           <label> Make :</label>
-          {{ item.Make }}
+          {{ item.make }}
         </div>
         {% endif %}
 
@@ -54,53 +54,76 @@
         </div>
         {% endif %}
         
-        {% if item.Year != null %}
+        {% if item.year != null %}
         <div class="attribute">
           <label> Year :</label>
-          {{ item.Year }}
+          {{ item.year }}
+        </div>
+        {% endif %}
+        {% if item.miles != null %}
+        <div class="attribute">
+          <label> Miles :</label>
+          {{ item.miles }}
         </div>
         {% endif %}
 
-        {% if item.Color != null %}
+        {% if item.color != null %}
         <div class="attribute">
           <label> Color :</label>
-          {{ item.Color }}
+          {{ item.color }}
         </div>
         {% endif %}
-
-        {% if item.PhoneNumber != null %}
+        {% if item.size != null %}
         <div class="attribute">
-          <label> Phone Number :</label>
-          {{ item.PhoneNumber }}
+          <label> Size :</label>
+          {{ item.size }}
         </div>
         {% endif %}
-
-
-        {% if item.Description != null %}
+        {% if item.description != null %}
         <div class="attribute">
           <label> Description :</label>
-          {{ item.Description }}
+          {{ item.description }}
         </div>
         {% endif %}
 
-        {% if item.Price != null %}
+        {% if item.price != null %}
         <div class="attribute">
           <label> Price :</label>
-          {{ item.Price }}
+          {{ item.price }}
         </div>
         {% endif %}
 
-        {% if item.City != null %}
+        {% if item.city != null %}
         <div class="attribute">
           <label> City :</label>
-          {{ item.City }}
+          {{ item.city }}
         </div>
         {% endif %}
 
-        {% if item.Condition != null %}
+        {% if item.condition != null %}
         <div class="attribute">
           <label> Condition :</label>
-          {{ item.Condition }}
+          {{ item.condition }}
+        </div>
+        {% endif %}
+        {% if item.phoneNumber != null %}
+        <div class="attribute">
+          <label> Phone Number :</label>
+          {{ item.phoneNumber }}
+        </div>
+        {% endif %}
+
+        {% if item.type != null %}
+        <div class="attribute">
+          <label> Type :</label>
+          {{ item.type }}
+        </div>
+        {% endif %}
+
+        {% if item.email != null %}
+        <div class="attribute">
+          <label> Email :</label>
+          {{ item.email }}
         </div>
         {% endif %}
       </div>
