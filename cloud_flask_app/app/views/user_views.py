@@ -33,6 +33,7 @@ def get_forsale_items(category):
 
 @app.route('/Community/<category>', methods=['GET', 'POST'])
 def get_community_items(category):
+    # Categories: events, lost and found, classes, volunteering, rideshare
     dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
     table = dynamodb.Table('Community')
     response =table.scan()
@@ -43,7 +44,7 @@ def get_community_items(category):
             print(i)
             contents.append(i)
     print('title: ' + category, 'loggedIn: ' + environ.get('LOGIN') + '!!!!!!!!!!')
-    return render_template('user/ListViewCommunity.html',title=category, loggedIn=environ.get('LOGIN'), contents=contents)
+    return render_template('user/ListViewCommunity.html',title=category, loggedIn=environ.get('LOGIN'), url="/user/AddCommunity/" + category, contents=contents)
 
 @app.route('/Housing/<category>', methods=['GET', 'POST'])
 def get_housing_items(category):

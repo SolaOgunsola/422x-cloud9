@@ -12,23 +12,37 @@ S3_SECRET = environ.get('S3_SECRET')
 S3_KEY = environ.get('S3_KEY')
 contents = None
 
-@app.route('/user/AddCommunity', methods=['GET', 'POST'])
-def addCommunity():
-    print("Request Method: " + request.method)
+@app.route('/user/AddCommunity/<category>', methods=['GET', 'POST'])
+def addCommunity(category):
+    # Post Handling
     if request.method == 'POST':
-        dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+        dynamodb = boto3.resource('dynamodb', aws_access_key_id=S3_KEY, aws_secret_access_key=S3_SECRET, region_name="us-east-1")
         table = dynamodb.Table('Community')
-        dTable = {
-            "itemCode": time.time_ns(),
-            "category": request.form['category'],
-            "description": request.form['description'],
-            "location": request.form['location'],
-            "time": request.form['time'],
-            "requirements": request.form['requirements'],
-            "PhoneNumber": request.form['phone']
-        }
-        print(dTable)
+        dTable = formatJson(request.form)
         table.put_item(Item=dTable)
         return redirect("/")
 
-    return render_template("user/AddCommunity.html")
+    # Get Handling
+    if category == 'classes':
+        return render_template("user/AddCommunity/AddClasses.html")
+    elif category == 'events':
+        return render_template("user/AddCommunity/AddEvent.html")
+    elif category == 'lost':
+        return render_template("user/AddCommunity/AddLostFound.html")
+    elif category == 'rideshare':
+        return render_template("user/AddCommunity/AddRideshare.html")
+    elif category == 'volunteering':
+        return render_template("user/AddCommunity/AddVolunteering.html")
+    else:
+        print('No category input. Redirecting to home.')
+        return redirect("/")
+
+def formatJson(form):
+    newDictionary = {}
+    keys = form.keys()
+    newDictionary["itemCode"] = time.time_ns()
+    for key in keys:
+        newDictionary[key] = form[key]
+    # Debug
+    print(newDictionary)
+    return newDictionary
