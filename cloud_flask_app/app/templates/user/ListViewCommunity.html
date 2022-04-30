@@ -50,6 +50,12 @@
           {{ item.dayFound }}
         </div>
          {% endif %}
+        {% if item.description != null %}
+         <div class="attribute">
+            <label> Description :</label>
+            {{ item.description }}
+          </div>
+           {% endif %}
         {% if item.Description != null %}
          <div class="attribute">
             <label> Description :</label>
@@ -66,21 +72,56 @@
 
              {% if item.seekOrOffer != null %}
              <div class="attribute">
-                <label>Seek Or Offer :</label>
+                <label>Seeking or Offering :</label>
                 {{ item.seekOrOffer }}
               </div>
                {% endif %}
                {% if item.seats != null %}
                <div class="attribute">
-                  <label>Available Seats :</label>
+                  <label># of Seats :</label>
                   {{ item.seats }}
                 </div>
                  {% endif %}
-
+               {% if item.destination != null %}
+               <div class="attribute">
+                  <label>Destination :</label>
+                  {{ item.destination }}
+                </div>
+                 {% endif %}
+               {% if item.day != null %}
+               <div class="attribute">
+                  <label>Day :</label>
+                  {{ item.day }}
+                </div>
+                 {% endif %}
+               {% if item.gas != null %}
+               <div class="attribute">
+                  <label>Can Split Gas:</label>
+                  {{ item.gas }}
+                </div>
+                 {% endif %}
+               {% if item.drive != null %}
+               <div class="attribute">
+                  <label>Willing to Drive :</label>
+                  {{ item.drive }}
+                </div>
+                 {% endif %}
                  {% if item.type != null %}
                  <div class="attribute">
                     <label> Type of Service:</label>
                     {{ item.type }}
+                  </div>
+                   {% endif %}
+                 {% if item.title != null %}
+                 <div class="attribute">
+                    <label> Volunteer Title:</label>
+                    {{ item.title }}
+                  </div>
+                   {% endif %}
+                 {% if item.organization != null %}
+                 <div class="attribute">
+                    <label> Organization:</label>
+                    {{ item.organization }}
                   </div>
                    {% endif %}
 
@@ -102,6 +143,12 @@
            <div class="attribute">
              <label> Start Date :</label>
              {{ item.startDate }}
+            </div>
+            {% endif %}
+           {% if item.date != null %}
+           <div class="attribute">
+             <label> Date :</label>
+             {{ item.date }}
            </div>
            {% endif %}
            {% if item.startTime != null %}
@@ -131,7 +178,7 @@
            {% if item.item != null %}
            <div class="attribute">
              <label> Item :</label>
-             {{ item.Iitem }}
+             {{ item.item }}
            </div>
            {% endif %}
            {% if item.subject != null %}

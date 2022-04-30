@@ -10,29 +10,46 @@
     <form method="POST">
       <input name="category" type="hidden" value="Rideshare" readonly required/>
       <div class="field">
-        <label>Seeking or Offering</label>
+        <label>Seeking or Offering?</label>
         <select name="seekOrOffer">
           <option value="seeking">Seeking</option>
           <option value="offering">Offering</option>
         </select>
       </div>
       <div class="field">
-        <label>Car Description:</label>
-        <textarea name="description" required></textarea>
+        <label>Able to split gas?</label>
+        <select name="gas">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
-        <label>Available Seats:</label>
+        <label>Willing to drive?</label>
+        <select name="drive">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="field">
+        <label># of Seats:</label>
         <input name="seats" type="number" required />
       </div>
       <div class="field">
-        <label>Type of Service:</label>
-        <input name="type" type="text" required />
+        <label>Description:</label>
+        <input name="description" type="text" required />
+      </div>
+      <div class="field">
+        <label>Destination:</label>
+        <input name="destination" type="text" required />
+      </div>
+      <div class="field">
+        <label>Day:</label>
+        <input name="day" type="text" required />
       </div>
       <div class="field">
         <label>Phone Number:</label>
-        <input name="phone" type="tel" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <input name="phoneNumber" type="tel" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
       </div>
-
       <input type="submit" />
     </form>
   </body>
