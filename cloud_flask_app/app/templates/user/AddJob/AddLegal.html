@@ -7,7 +7,7 @@
     <div class="title">Add a new Item</div>
     <!-- Prosecutor/Defense, Law firm, Salary, expertise, city, phone -->
     <form method="POST">
-      <input name="category" type="hidden" value="Legal Job" readonly required/>
+      <input name="category" type="hidden" value="legal" readonly required/>
       <div class="field">
         <label>Prosecutor/Defense:</label>
         <select name="type">
@@ -33,7 +33,7 @@
       </div>
       <div class="field">
         <label>Phone Number:</label>
-        <input type="tel" name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <input type="tel" name="phoneNumber" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
       </div>
       <input type="submit" />
     </form>

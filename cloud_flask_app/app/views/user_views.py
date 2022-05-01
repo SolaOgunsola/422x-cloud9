@@ -57,7 +57,7 @@ def get_housing_items(category):
         if category == (i['category']):
             print(i)
             contents.append(i)
-    return render_template('user/ListViewHousing.html',title=category, loggedIn=environ.get('LOGIN'),contents=contents)
+    return render_template('user/ListViewHousing.html',title=category, loggedIn=environ.get('LOGIN'), url="/user/AddHousing/" + category, contents=contents)
 
 @app.route('/Jobs/<category>', methods=['GET', 'POST'])
 def get_jobs_items(category):
@@ -69,7 +69,7 @@ def get_jobs_items(category):
         if category == (i['category']):
             print(i)
             contents.append(i)
-    return render_template('user/ListViewJob.html',title=category, loggedIn=environ.get('LOGIN'),contents=contents)
+    return render_template('user/ListViewJob.html',title=category, loggedIn=environ.get('LOGIN'), url="/user/AddJob/" + category, contents=contents)
 
 @app.route('/Services/<category>', methods=['GET', 'POST'])
 def get_services_items(category):
@@ -81,5 +81,5 @@ def get_services_items(category):
         if category == (i['category']):
             print(i)
             contents.append(i)
-    return render_template('user/ListViewServices.html',title=category,loggedIn=environ.get('LOGIN'), contents=contents)
+    return render_template('user/ListViewServices.html',title=category,loggedIn=environ.get('LOGIN'), url="/user/AddServices/" + category, contents=contents)
 

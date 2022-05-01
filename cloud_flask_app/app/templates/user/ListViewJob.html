@@ -8,7 +8,7 @@
 <body>
   <div class="title">Listings for {{title}}</div>
   {% if loggedIn == '1' %}
-    <div class="addItem"><a href="/user/AddJob">Click Here to add Item </a></div>
+    <div class="addItem"><a href={{ url }}>Click Here to add Item </a></div>
   {% else %}
     <div class="addItem"><a href="/">Log in on the main page to post :)</a></div>
   {% endif %}
@@ -22,10 +22,10 @@
          {{ item.title }}
         </div>
         {% endif %}
-        {% if item.category != null %}
+        {% if item.stockOptions != null %}
         <div class="attribute">
-          <label> Category :</label>
-         {{ item.category }}
+          <label>Stock Options:</label>
+         {{ item.stockOptions }}
         </div>
           {% endif %}
        {% if item.experience != null %}
@@ -34,16 +34,70 @@
             {{ item.experience }}
           </div>
             {% endif %}
+      {% if item.school != null %}
+      <div class="attribute">
+          <label> School:</label>
+          {{ item.school }}
+        </div>
+          {% endif %}
       {% if item.subjects != null %}
       <div class="attribute">
           <label> Subject(s) :</label>
           {{ item.subjects }}
         </div>
           {% endif %}
+       {% if item.type != null %}
+         <div class="attribute">
+          <label>Prosecutor or Defense:</label>
+          {{ item.type }}
+        </div>
+          {% endif %}
+       {% if item.lawFirm != null %}
+         <div class="attribute">
+          <label>Name of Firm:</label>
+          {{ item.lawFirm }}
+        </div>
+          {% endif %}
        {% if item.salary != null %}
          <div class="attribute">
           <label> Salary :</label>
           {{ item.salary }}
+        </div>
+          {% endif %}
+       {% if item.expertise != null %}
+         <div class="attribute">
+          <label>Area(s) of Expertise:</label>
+          {{ item.expertise }}
+        </div>
+          {% endif %}
+       {% if item.city != null %}
+         <div class="attribute">
+          <label>City:</label>
+          {{ item.city }}
+        </div>
+          {% endif %}
+       {% if item.address != null %}
+         <div class="attribute">
+          <label>Address:</label>
+          {{ item.address }}
+        </div>
+          {% endif %}
+       {% if item.remote != null %}
+         <div class="attribute">
+          <label>Remote:</label>
+          {{ item.remote }}
+        </div>
+          {% endif %}
+       {% if item.benefits != null %}
+         <div class="attribute">
+          <label>Benefits:</label>
+          {{ item.benefits }}
+        </div>
+          {% endif %}
+       {% if item.company != null %}
+         <div class="attribute">
+          <label>Company:</label>
+          {{ item.company }}
         </div>
           {% endif %}
        {% if item.location != null %}
@@ -58,10 +112,10 @@
             {{ item.description }}
           </div>
             {% endif %}
-         {% if item.PhoneNumber != null %}
+         {% if item.phoneNumber != null %}
            <div class="attribute">
             <label> Phone Number :</label>
-            {{ item.PhoneNumber }}
+            {{ item.phoneNumber }}
           </div>
             {% endif %}
       </div>

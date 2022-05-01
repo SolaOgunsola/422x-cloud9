@@ -6,7 +6,8 @@
   <body>
     <div class="title">Add a new Item</div>
     <!-- Title, School, Subject(s), Description, Salary, email -->
-    <input name="category" type="hidden" value="Education" readonly required/>
+    <form method="POST">
+      <input name="category" type="hidden" value="education" readonly required/>
       <div class="field">
         <label>Title:</label>
         <input name="title" type="text" required />
@@ -29,7 +30,7 @@
       </div>
       <div class="field">
         <label>Phone Number:</label>
-        <input name="phone" type="tel" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <input name="phoneNumber" type="tel" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
       </div>
 
       <input type="submit" />
