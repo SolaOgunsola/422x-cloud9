@@ -7,7 +7,7 @@
     <div class="title">Add a new Item</div>
 
     <form method="POST">
-      <input name="category" type="hidden" value="cars" readonly required/>
+      <input name="category" type="hidden" value="car" readonly required/>
       <div class="field">
         <label>Make:</label>
         <input name="make" type="text" required />
@@ -46,11 +46,11 @@
       </div>
       <div class="field">
         <label>City:</label>
-        <input type="text" name="city" required />
+        <input name="city" type="text" required />
       </div>
       <div class="field">
         <label>Phone Number:</label>
-        <input name="phone" type="tel" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <input name="phoneNumber" type="tel" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
       </div>
 
       <input type="submit" />

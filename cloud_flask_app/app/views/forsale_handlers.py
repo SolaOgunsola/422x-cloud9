@@ -12,41 +12,39 @@ S3_SECRET = environ.get('S3_SECRET')
 S3_KEY = environ.get('S3_KEY')
 contents = None
 
-@app.route('/user/AddForSale', methods=['GET', 'POST'])
-def addForSale():
-    print("Request Method: " + request.method)
+@app.route('/user/AddForSale/<category>', methods=['GET', 'POST'])
+def addForSale(category):
+    # Post Handling
     if request.method == 'POST':
-        make = request.form['make']
-        category = request.form['category']
-        manu = request.form['manu']
-        descrip = request.form['descrip']
-        price = request.form['price']
-        color = request.form['color']
-        miles = request.form['miles']
-        year = request.form['year']
-        condition = request.form['condition']
-        phone = request.form['phone']
-        city = request.form['city']
-
-        dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
+        dynamodb = boto3.resource('dynamodb', aws_access_key_id=S3_KEY, aws_secret_access_key=S3_SECRET, region_name="us-east-1")
         table = dynamodb.Table('ForSale')
-        dTable = {
-            "itemCode": time.time_ns(),
-            "category": category,
-            "City": city,
-            "Color": color,
-            "Condition": condition,
-            "Manufacturer": manu,
-            "Make": make,
-            "Miles": miles,
-            "PhoneNumber": phone,
-            "Description": descrip,
-            "Price": price,
-            "Year": year,
-        }
-        print(dTable)
+        dTable = formatJson(request.form)
         table.put_item(Item=dTable)
         return redirect("/")
 
-    return render_template("user/AddForSale.html")
+    # Get Handling
+    if category == 'art':
+        return render_template("user/AddForSale/AddArt.html")
+    elif category == 'boat':
+        return render_template("user/AddForSale/AddBoat.html")
+    elif category == 'car':
+        return render_template("user/AddForSale/AddCar.html")
+    elif category == 'furniture':
+        return render_template("user/AddForSale/AddFurniture.html")
+    elif category == 'tv':
+        return render_template("user/AddForSale/AddTV.html")
+    else:
+        print('No category input. Redirecting to home.')
+        return redirect("/")
+
+
+def formatJson(form):
+    newDictionary = {}
+    keys = form.keys()
+    newDictionary["itemCode"] = time.time_ns()
+    for key in keys:
+        newDictionary[key] = form[key]
+    # Debug
+    print(newDictionary)
+    return newDictionary
 

@@ -8,7 +8,7 @@
 
     <!-- Manufacturer, Type, Year, Condition, Description, Price, Email -->
     <form method="POST">
-      <input name="category" type="hidden" value="boats" readonly required/>
+      <input name="category" type="hidden" value="boat" readonly required/>
       <div class="field">
         <label>Manufacturer:</label>
         <input name="manufacturer" type="text" required />
@@ -30,19 +30,17 @@
           </select>
       </div>
       <div class="field">
-        <label> Description :</label>
-        <textarea name="description" class="description" required></textarea>
+        <label>Description:</label>
+        <textarea name="description" required></textarea>
       </div>
       <div class="field">
         <label>Price:</label>
-        <input name="price" type="number" class="price" required />
+        <input name="price" type="number" required />
       </div>
       <div class="field">
         <label>Email:</label>
         <input name="email" type="text" placeholder="example@domain.com" required>
       </div>
-
-
       <input type="submit" />
     </form>
   </body>

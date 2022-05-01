@@ -10,7 +10,7 @@
 
   <div class="title">Listings for {{title}}</div>
   {% if loggedIn == '1' %}
-  <div class="addItem"><a href="/user/AddForSale">Click Here to add Item </a></div>
+  <div class="addItem"><a href={{ url }}>Click Here to add Item </a></div>
   {% else %}
   <div class="addItem"><a href="/">Log in on the main page to post :)</a></div>
   {% endif %}
@@ -19,6 +19,12 @@
     <div class="item">
       <div class="brief">
 
+        {% if item.Manufacturer != null %}
+        <div class="attribute">
+          <label> Manufacturer :</label>
+          {{ item.Manufacturer }}
+        </div>
+        {% endif %}
         {% if item.manufacturer != null %}
         <div class="attribute">
           <label> Manufacturer :</label>
@@ -110,13 +116,6 @@
         <div class="attribute">
           <label> Phone Number :</label>
           {{ item.phoneNumber }}
-        </div>
-        {% endif %}
-
-        {% if item.type != null %}
-        <div class="attribute">
-          <label> Type :</label>
-          {{ item.type }}
         </div>
         {% endif %}
 

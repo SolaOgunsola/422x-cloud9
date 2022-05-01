@@ -5,24 +5,28 @@
   </head>
   <body>
     <div class="title">Add a new Item</div>
-    <input name="category" type="hidden" value="art" readonly required/>
     <!-- Title, Artist, Year, Medium, Price, email -->
     <form method="POST">
+      <input name="category" type="hidden" value="art" readonly required/>
       <div class="field">
         <label>Title:</label>
-        <input name="title" class="make" type="text" required />
+        <input name="title" type="text" required />
       </div>
       <div class="field">
         <label>Artist:</label>
-        <input name="artist" class="make" type="text" required />
+        <input name="artist" type="text" required />
       </div>
       <div class="field">
         <label>Year:</label>
-        <input name="year" class="year" type="number" required />
+        <input name="year" type="number" required />
+      </div>
+      <div class="field">
+        <label>Condition:</label>
+        <input name="condition" type="text" required />
       </div>
       <div class="field">
         <label>Price:</label>
-        <input name="price" type="number" class="price" required />
+        <input name="price" type="number" required />
       </div>
       <div class="field">
         <label>Email:</label>
