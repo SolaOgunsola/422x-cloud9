@@ -46,6 +46,12 @@
             {{ item.type }}
           </div>
           {% endif %}
+          {% if item.autoType != null %}
+          <div class="attribute">
+            <label>Automotive Repair:</label>
+            {{ item.autoType }}
+          </div>
+          {% endif %}
           {% if item.petType != null %}
           <div class="attribute">
             <label> Type of Pet :</label>
@@ -60,7 +66,7 @@
           {% endif %}
          {% if item.price != null %}
          <div class="attribute">
-            <label> Price :</label>
+            <label>Price per Hour ($):</label>
             {{ item.price }}
           </div>
              {% endif %}

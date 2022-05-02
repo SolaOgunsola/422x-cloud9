@@ -25,6 +25,12 @@
           {{ item.Manufacturer }}
         </div>
         {% endif %}
+        {% if item.title != null %}
+        <div class="attribute">
+          <label> Title :</label>
+          {{ item.title }}
+        </div>
+        {% endif %}
         {% if item.manufacturer != null %}
         <div class="attribute">
           <label> Manufacturer :</label>
