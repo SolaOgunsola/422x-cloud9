@@ -34,18 +34,17 @@ def index():
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        # conn = 
         username = request.form['username']
         password = request.form['password']
-        print(username)
-        print(password)
         dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
         table = dynamodb.Table('Users')
         dynamoCanBlowMe = {
             "username": username,
             "password": password
         }
+        print("Registering new User: ")
+        print(dynamoCanBlowMe)
         table.put_item(Item=dynamoCanBlowMe)
-        return render_template("public/login.html")
+        return redirect("/login")
 
     return render_template("public/register.html")
