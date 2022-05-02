@@ -17,7 +17,7 @@ def addService(category):
     # Post Handling
     if request.method == 'POST':
         dynamodb = boto3.resource('dynamodb', aws_access_key_id=S3_KEY, aws_secret_access_key=S3_SECRET, region_name="us-east-1")
-        table = dynamodb.Table('Jobs')
+        table = dynamodb.Table('Services')
         dTable = formatJson(request.form)
         table.put_item(Item=dTable)
         return redirect("/")
