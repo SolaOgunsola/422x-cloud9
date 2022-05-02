@@ -8,7 +8,7 @@
 <body>
   <div class="title">Listings for {{title}}</div>
   {% if loggedIn == '1' %}
-  <div class="addItem"><a href="/user/AddService">Click Here to add Item </a></div>
+  <div class="addItem"><a href={{url}}>Click Here to add Item </a></div>
   {% else %}
   <div class="addItem"><a href="/">Log in on the main page to post :)</a></div>
   {% endif %}
@@ -64,10 +64,10 @@
             {{ item.price }}
           </div>
              {% endif %}
-         {% if item.PhoneNumber != null %}
+         {% if item.phoneNumber != null %}
          <div class="attribute">
             <label> Phone Number :</label>
-            {{ item.PhoneNumber }}
+            {{ item.phoneNumber }}
           </div>
           {% endif %}
       </div>

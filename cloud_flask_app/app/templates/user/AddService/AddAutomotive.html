@@ -7,7 +7,7 @@
     <div class="title">Add a new Item</div>
 
     <form method="POST">
-      <input name="category" type="hidden" value="Automotive" readonly required/>
+      <input name="category" type="hidden" value="automotive" readonly required/>
       <div class="field">
         <label>Type of Automotive:</label>
         <select name="type">
@@ -18,23 +18,23 @@
       </div>
       <div class="field">
         <label>Availability:</label>
-        <input name="availability" class="make" type="text" required />
+        <input name="availability" type="text" required />
       </div>
       <div class="field">
         <label>Location:</label>
-        <input name="location" class="location" type="text" required />
+        <input name="location" type="text" required />
       </div>
       <div class="field">
         <label>Service Description:</label>
-        <textarea name="description" class="description" required></textarea>
+        <textarea name="description" required></textarea>
       </div>
       <div class="field">
         <label>Price Per Hour:</label>
-        <input name="price" type="number" class="price" required />
+        <input name="price" type="number" required />
       </div>
       <div class="field">
         <label>Phone Number:</label>
-        <input type="tel"  name="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <input type="tel"  name="phoneNumber" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
       </div>
       <input type="submit" />
     </form>

@@ -47,24 +47,3 @@ def formatJson(form):
     # Debug
     print(newDictionary)
     return newDictionary
-
-
-def addJob():
-    print("Request Method: " + request.method)
-    if request.method == 'POST':
-        dynamodb = boto3.resource('dynamodb',aws_access_key_id=S3_KEY,aws_secret_access_key=S3_SECRET,region_name="us-east-1")
-        table = dynamodb.Table('Jobs')
-        dTable = {
-            "itemCode": time.time_ns(),
-            "category": request.form['category'],
-            "experience": request.form['experience'],
-            "salary": request.form['salary'],
-            "location": request.form['location'],
-            "description": request.form['description'],
-            "PhoneNumber": request.form['phone']
-        }
-        print(dTable)
-        table.put_item(Item=dTable)
-        return redirect("/")
-
-    return render_template("user/AddJob.html")

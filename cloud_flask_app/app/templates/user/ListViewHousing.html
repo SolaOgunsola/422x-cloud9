@@ -9,7 +9,7 @@
 <body>
   <div class="title">Listings for {{title}}</div>
   {% if loggedIn == '1' %}
-  <div class="addItem"><a href="/user/AddHousing">Click Here to add Item </a></div>
+  <div class="addItem"><a href={{ url }}>Click Here to add Item </a></div>
   {% else %}
   <div class="addItem"><a href="/">Log in on the main page to post :)</a></div>
   {% endif %}
@@ -21,6 +21,18 @@
         <div class="attribute">
           <label> Category :</label>
           {{ item.category }}
+        </div>
+        {% endif %}
+        {% if item.address != null %}
+        <div class="attribute">
+          <label>Address:</label>
+          {{ item.address }}
+        </div>
+        {% endif %}
+        {% if item.city != null %}
+        <div class="attribute">
+          <label>City:</label>
+          {{ item.city }}
         </div>
         {% endif %}
         {% if item.description != null %}
@@ -37,7 +49,7 @@
         {% endif %}
         {% if item.lease != null %}
         <div class="attribute">
-          <label> Lease :</label>
+          <label>Length of Lease (# of Months):</label>
           {{ item.lease }}
         </div>
         {% endif %}
@@ -74,7 +86,13 @@
           {{ item.baths }}
         </div>
         {% endif %}
-
+        {% if item.backyard != null %}
+        <div class="attribute">
+          <label>Backyard:</label>
+          {{ item.backyard }}
+        </div>
+        {% endif %}
+        
         {% if item.parking != null %}
         <div class="attribute">
           <label> Parking :</label>
@@ -108,7 +126,7 @@
 
         {% if item.pets != null %}
         <div class="attribute">
-          <label> Pets :</label>
+          <label>Pet Friendly:</label>
           {{ item.pets }}
         </div>
         {% endif %}
